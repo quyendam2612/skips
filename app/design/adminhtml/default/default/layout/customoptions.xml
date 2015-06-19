@@ -1,0 +1,42 @@
+<layout version="0.1.0">
+	 <default>
+		 	<reference name="head">
+    			<!--<action method="addItem"><type>skin_js</type><name>customoptions/js/jquery-1.4.4.js</name></action>			-->
+               	<!--<action method="addItem"><type>skin_css</type><name>customoptions/css/jquery-ui-1.8.12.custom.css</name></action>-->
+               	<action method="addItem"><type>skin_css</type><name>customoptions/css/jquery.checkboxtree.css</name></action>
+				<!--<action method="addItem"><type>skin_js</type><name>customoptions/js/jquery-ui-1.8.12.custom.min.js</name></action>-->
+				<!--<action method="addItem"><type>skin_js</type><name>customoptions/js/jquery.checkboxtree.js</name></action>-->
+    		</reference> 
+		     </default>
+    <customoptions_adminhtml_index_index>
+    		    	
+        <reference name="content">
+            <block type="customoptions/adminhtml_customoptions"  name="customoptions" alias="customoptions"/>
+        </reference>
+    </customoptions_adminhtml_index_index>
+        <customoptions_adminhtml_index_products>
+			<block type="core/text_list" name="root" output="toHtml">
+					   <block type="customoptions/adminhtml_customoptions_edit_tab_grid" name="product.grid"/>
+					   <block type="adminhtml/widget_grid_serializer" name="grid_serializer">
+						   <reference name="grid_serializer">
+							   <action method="initSerializerBlock">
+								   <grid_block_name>product.grid</grid_block_name>
+								   <data_callback>getSelectedProducts</data_callback>
+								   <hidden_input_name>links[products]</hidden_input_name>
+								   <reload_param_name>products_id</reload_param_name>
+							   </action>
+
+							   <action method="addColumnInputName">
+								   <input_name>position</input_name>
+							   </action>                  
+						   </reference>
+					   </block>
+				   </block>
+		</customoptions_adminhtml_index_products>
+		<customoptions_adminhtml_index_productsgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="customoptions/adminhtml_customoptions_edit_tab_grid" name="product.grid"/>
+        </block>
+		</customoptions_adminhtml_index_productsgrid>
+
+</layout>

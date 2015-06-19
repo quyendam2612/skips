@@ -1,0 +1,38 @@
+#div_custom_option_container
+{
+	display:none;
+}
+
+#a_custom_option
+{
+	cursor: pointer;
+}
+#addLink
+{
+	float: right;
+	cursor: pointer;
+}
+.report_grid 
+{
+	width: 100%;
+}
+.heading
+{
+	font-weight: bold;
+}
+.copy-options
+{
+	height:auto; 
+	max-height:350px;
+	overflow:auto;
+}
+.del_row
+{
+	width:100%;
+	float:left;
+}
+.main-col-copy-options
+{
+	width:100%;
+	float:left;
+}

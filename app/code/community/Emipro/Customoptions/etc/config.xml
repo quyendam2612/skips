@@ -1,0 +1,101 @@
+<config>
+   	<modules>
+       	<Emipro_Customoptions>
+           		<version>1.1.0</version>
+       	</Emipro_Customoptions>
+   	</modules>
+
+    <global>
+		<models>
+			<catalog>
+				<rewrite>
+					<product>Emipro_Customoptions_Model_Product</product>
+				</rewrite>
+
+				<rewrite>
+					<product_option>Emipro_Customoptions_Model_Product_Option</product_option>
+				</rewrite>
+
+			</catalog>
+            <customoptions>
+                <class>Emipro_Customoptions_Model</class>
+            </customoptions>
+		</models>
+		<blocks>
+            <customoptions>
+                <class>Emipro_Customoptions_Block</class>
+            </customoptions>
+
+			<adminhtml>
+				<rewrite>
+                    <catalog_product_edit_tab_options_option>Emipro_Customoptions_Block_Adminhtml_Catalog_Product_Edit_Tab_Options_Option</catalog_product_edit_tab_options_option>
+				</rewrite>
+
+				<rewrite>
+					<catalog_product_edit_tab_options_type_date>Emipro_Customoptions_Block_Adminhtml_Catalog_Product_Edit_Tab_Options_Type_Date</catalog_product_edit_tab_options_type_date>
+				</rewrite>
+
+				<rewrite>
+					<catalog_product_edit_tab_options_type_file>Emipro_Customoptions_Block_Adminhtml_Catalog_Product_Edit_Tab_Options_Type_File</catalog_product_edit_tab_options_type_file>
+				</rewrite>
+
+				<rewrite>
+					<catalog_product_edit_tab_options_type_text>Emipro_Customoptions_Block_Adminhtml_Catalog_Product_Edit_Tab_Options_Type_Text</catalog_product_edit_tab_options_type_text>
+				</rewrite>
+			</adminhtml>
+
+        </blocks>
+        <helpers>
+			<customoptions>
+				<class>Emipro_Customoptions_Helper</class>
+			</customoptions>
+        </helpers>
+    </global>
+
+	<admin>
+        <routers>
+			<customoptions>
+				<use>admin</use>
+				<args>
+					<module>Emipro_Customoptions</module>
+					<frontName>customoptions</frontName>
+				</args>
+			</customoptions>
+        </routers>
+    </admin>
+    <adminhtml>
+				<menu>
+			<catalog>
+				<children>
+			 <customoptions>
+				 <title>Manage Custom Options</title>
+				 <sort_order>11</sort_order>             
+				 <action>customoptions/adminhtml_index</action>
+			</customoptions>
+			</children>
+			</catalog>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<Emipro_Customoptions>
+							<title>customoptions</title>
+							<sort_order>10</sort_order>
+						</Emipro_Customoptions>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<customoptions>
+					<file>customoptions.xml</file>
+				</customoptions>
+			</updates>
+		</layout>
+    </adminhtml> 
+</config>
