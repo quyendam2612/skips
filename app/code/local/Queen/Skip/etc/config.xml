@@ -9,11 +9,16 @@
         <models>
             <queen_skip>
                 <class>Queen_Skip_Model</class>
-                <resourceModel>queen_skip_resource</resourceModel>
+                <resourceModel>queen_skip_mysql4</resourceModel>
             </queen_skip>
-            <queen_skip_resource>
-                <class>Queen_Skip_Model_Resource</class>
-            </queen_skip_resource>
+            <queen_skip_mysql4>
+                <class>Queen_Skip_Model_Mysql4</class>
+                <entities>
+                    <permit>
+                        <table>queen_skip_permit</table>
+                    </permit>
+                </entities>
+            </queen_skip_mysql4>
         </models>
         <blocks>
             <queen_skip>
@@ -42,7 +47,49 @@
             </updates>
         </layout>
     </frontend>
+    <admin>
+        <routers>
+            <skip>
+                <use>admin</use>
+                <args>
+                    <module>Queen_Skip</module>
+                    <frontName>skip</frontName>
+                </args>
+            </skip>
+        </routers>
+    </admin>
     <adminhtml>
+        <menu>
+            <catalog>
+                <children>
+                    <skip_permit>
+                        <title>SKIP - Manage Permit Type</title>
+                        <sort_order>901</sort_order>
+                        <action>skip/adminhtml_permit</action>
+                    </skip_permit>
+                    <skip_postcode>
+                        <title>SKIP - Manage Postcode</title>
+                        <sort_order>902</sort_order>
+                        <action>skip/adminhtml_postcode</action>
+                    </skip_postcode>
+                </children>
+            </catalog>
+        </menu>
+        <acl>
+            <resources>
+                <admin>
+                    <children>
+                        <catalog>
+                            <children>
+                                <skip_permit>
+                                    <title>SKIP - Manage Permit Type</title>
+                                </skip_permit>
+                            </children>
+                        </catalog>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
         <layout>
             <updates>
                 <skip>
