@@ -1,0 +1,10 @@
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addItem"><type>skin_js</type><name>skip/jquery-ui.min.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>skip/jquery.datepick/jquery.plugin.js</name></action>
+            <action method="addItem"><type>skin_js</type><name>skip/jquery.datepick/jquery.datepick.js</name></action>
+            <action method="addItem"><type>skin_css</type><name>skip/jquery.datepick/jquery.datepick.css</name></action>
+        </reference>
+    </default>
+</layout>
