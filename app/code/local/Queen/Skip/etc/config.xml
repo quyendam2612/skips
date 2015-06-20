@@ -33,6 +33,15 @@
             </queen_skip_setup>
         </resources>
     </global>
+    <frontend>
+        <layout>
+            <updates>
+                <skip>
+                    <file>skip.xml</file>
+                </skip>
+            </updates>
+        </layout>
+    </frontend>
     <adminhtml>
         <layout>
             <updates>
@@ -45,8 +54,11 @@
     <stores>
         <admin>
             <design>
+                <package>
+                    <name>default</name>
+                </package>
                 <theme>
-                    <template>skip</template>
+                    <default>skip</default>
                 </theme>
             </design>
         </admin>
