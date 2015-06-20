@@ -1,0 +1,136 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<?php $_option = $this->getOption() ?>
+<?php $_optionId = $_option->getId() ?>
+<?php $_optionSku = $_option->getSku() ?>
+<?php $showCustom = ($_optionSku=='skip_start_date') ? true : false; ?>
+<dt><label<?php if ($_option->getIsRequire()) echo ' class="required"' ?>><?php if ($_option->getIsRequire()) echo '<em>*</em>' ?><?php echo  $this->escapeHtml($_option->getTitle()) ?></label>
+	<?php echo $this->getFormatedPrice() ?></dt>
+<dd<?php if ($_option->decoratedIsLast){?> class="last"<?php }?>>
+
+	<?php if ($_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_DATE_TIME
+	          || $_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_DATE): ?>
+
+		<?php echo $this->getDateHtml() ?>
+
+		<?php if (!$this->useCalendar()): ?>
+			<script type="text/javascript">
+				//<![CDATA[
+				Event.observe('options_<?php echo $_optionId ?>_month', 'change', dateOption.reloadMonth.bind(dateOption));
+				Event.observe('options_<?php echo $_optionId ?>_year', 'change', dateOption.reloadMonth.bind(dateOption));
+				//]]>
+			</script>
+		<?php endif; ?>
+
+	<?php endif; ?>
+
+	<?php if ($_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_DATE_TIME
+	          || $_option->getType() == Mage_Catalog_Model_Product_Option::OPTION_TYPE_TIME): ?>
+		<span class="time-picker"><?php echo $this->getTimeHtml() ?></span>
+	<?php endif; ?>
+
+	<input type="hidden" name="validate_datetime_<?php echo $_optionId ?>" class="validate-datetime-<?php echo $_optionId ?>" value="" />
+	<script type="text/javascript">
+		//<![CDATA[
+		<?php if ($_option->getIsRequire()): ?>
+		Validation.addAllThese(
+			[
+				['validate-datetime-<?php echo $_optionId ?>', '<?php echo $this->jsQuoteEscape( Mage::helper('catalog')->__('This is a required option') )?>', function(v) {
+					var dateTimeParts = $$('.datetime-picker[id^="options_<?php echo $_optionId ?>"]');
+					for (var i=0; i < dateTimeParts.length; i++) {
+						if (dateTimeParts[i].value == "") return false;
+					}
+					return true;
+				}]
+			]
+		);
+		<?php else: ?>
+		Validation.add(
+			'validate-datetime-<?php echo $_optionId ?>',
+			'<?php echo $this->jsQuoteEscape( Mage::helper('catalog')->__('Field is not complete') )?>',
+			function(v) {
+				var dateTimeParts = $$('.datetime-picker[id^="options_<?php echo $_optionId ?>"]');
+				var hasWithValue = false, hasWithNoValue = false;
+				var pattern = /day_part$/i;
+				for (var i=0; i < dateTimeParts.length; i++) {
+					if (! pattern.test(dateTimeParts[i].id)) {
+						if (dateTimeParts[i].value === "") {
+							hasWithValue = true;
+						} else {
+							hasWithNoValue = true;
+						}
+					}
+				}
+				return hasWithValue ^ hasWithNoValue;
+			}
+		);
+		<?php endif; ?>
+		//]]>
+	</script>
+	<?php if($showCustom): ?>
+		<style media="all" type="text/css">
+			#options_<?php echo $_optionId ?>_date_trig {
+				display: none !important;
+			}
+			.datepick-month-header select {
+				width: auto !important;
+			}
+		</style>
+		<?php
+		$product = Mage::getSingleton('catalog/product')->load($this->getProduct()->getEntityId());
+		$activeDates = $product->getSkipDate();
+		?>
+		<input type="hidden" id="altField" />
+		<span id="skip-date" />
+		<script type="text/javascript">
+			var skipDate = jQuery('#skip-date');
+			skipDate.datepick({
+				minDate: new Date(),
+				maxDate: '+1y',
+//				multiSelect: 9999,
+				monthsToShow: 1,
+				showTrigger: '<img id="skip-date-trigger" src="/skin/adminhtml/default/default/images/grid-cal.gif" />',
+				altField: '#altField',
+				altFormat: 'mm/dd/yyyy',
+				onSelect: function(dates) {
+//					jQuery("select.datepick-month-year").css('width', 'auto');
+					jQuery("#options_<?php echo $_optionId; ?>_date").val(jQuery("#altField").val());
+					jQuery("#options_<?php echo $_optionId ?>_date_trig").hide();
+				},
+				onDate: function(date) {
+					var dateStr = jQuery.datepick.formatDate('mm/dd/yyyy', date);
+					var activeDates = "<?php echo $activeDates ?>";
+					activeDates = activeDates.split(',');
+					return {
+						selectable: (jQuery.inArray(dateStr, activeDates) !== -1)
+					};
+				}
+			});
+			//		skipDate.datepick('setDate', jQuery("#skip_date").val().split(','));
+		</script>
+	<?php endif; ?>
+</dd>
