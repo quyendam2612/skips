@@ -18,6 +18,12 @@
                 <name>skip/jquery.datepick/jquery.datepick.css</name>
             </action>
         </reference>
+        <reference name="header">
+            <action method="unsetChild">
+                <name>topSearch</name>
+            </action>
+            <block type="core/template" name="top.search" as="topSearch" template="skip/catalogsearch/form.mini.phtml"/>
+        </reference>
     </default>
     <catalog_product_view>
         <reference name="product.info.options">
