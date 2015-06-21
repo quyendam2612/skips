@@ -1,6 +1,6 @@
-<?php $catalogSearchHelper =  $this->helper('catalogsearch'); ?>
+<form action="<?php echo Mage::helper('queen_skip')->getSearchUrl() ?>" method="POST">
 <div class="input-box">
-<!--	<label for="search">--><?php //echo $this->__('Search:') ?><!--</label>-->
-	<input id="search" type="search" name="<?php echo $catalogSearchHelper->getQueryParamName() ?>" value="<?php echo $catalogSearchHelper->getEscapedQueryText() ?>" class="input-text required-entry" maxlength="<?php echo $catalogSearchHelper->getMaxQueryLength();?>" placeholder="<?php echo $this->__('Search entire store here...') ?>" />
-<!--	<button type="submit" title="--><?php //echo $this->__('Search') ?><!--" class="button search-button"><span><span>--><?php //echo $this->__('Search') ?><!--</span></span></button>-->
+	<input id="postcode-search" type="search" name="postcode-search"  class="input-text required-entry" placeholder="<?php echo $this->__('Enter your postcode...') ?>" />
+	<button type="submit" title="<?php echo $this->__('Search') ?>" class="button search-button"><span><span><?php echo $this->__('Search') ?></span></span></button>
 </div>
+</form>

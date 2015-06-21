@@ -1,0 +1,29 @@
+<style type="text/css">
+	div.add-row {
+		padding: 5px;
+		margin: 2px;
+		border: 1px solid #3399cc;
+		cursor: pointer;
+	}
+</style>
+<?php
+/*
+ * @var $this Queen_Skip_Block_Search
+ */
+$submitURL = Mage::getUrl('skip/index/index');
+$result = $this->getAvailableAddress();
+foreach ($result as $r)
+{
+	echo "<div class='add-row'><span>$r</span></div>";
+}
+?>
+<form action="<?php echo $submitURL ?>" method="POST" id="select-address-form">
+	<input type="hidden" name="selected-address" id="selected-address" />
+</form>
+<script type="text/javascript">
+	jQuery("div.add-row").on('click', function(){
+		var address = jQuery(this).text();
+		jQuery("#selected-address").val(address);
+		jQuery("#select-address-form").submit();
+	});
+</script>

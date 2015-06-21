@@ -45,6 +45,15 @@
         </resources>
     </global>
     <frontend>
+        <routers>
+            <skip>
+                <use>standard</use>
+                <args>
+                    <module>Queen_Skip</module>
+                    <frontName>skip</frontName>
+                </args>
+            </skip>
+        </routers>
         <layout>
             <updates>
                 <skip>
@@ -88,6 +97,9 @@
         </menu>
         <acl>
             <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
                 <admin>
                     <children>
                         <catalog>
@@ -103,6 +115,17 @@
                                 </skip_town>
                             </children>
                         </catalog>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <queen_skip>
+                                            <title>SKIP - All</title>
+                                        </queen_skip>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
                     </children>
                 </admin>
             </resources>

@@ -38,12 +38,18 @@ class Queen_Skip_Block_Adminhtml_Postcode_Edit_Form extends Mage_Adminhtml_Block
 			));
 		}
 
+		$collection = Mage::getModel('queen_skip/town')->getCollection();
+		$options = array(0 => Mage::helper('core')->__('Please select'));
+		foreach ($collection as $c)
+		{
+			$options[$c->getId()] = $c->getCode() . " - " . $c->getName();
+		}
 		$fieldset->addField('town', 'select', array(
 			'name'      => 'town',
 			'label'     => Mage::helper('checkout')->__('Town'),
 			'title'     => Mage::helper('checkout')->__('Town'),
 			'required'  => true,
-			'values'    => Mage::getModel('queen_skip/town')->getCollection()->toOptionHash()
+			'values'    => $options
 		));
 
 		$fieldset->addField('district_from', 'text', array(
@@ -64,7 +70,7 @@ class Queen_Skip_Block_Adminhtml_Postcode_Edit_Form extends Mage_Adminhtml_Block
 			'name'      => 'postcode',
 			'label'     => Mage::helper('checkout')->__('Area/incode'),
 			'title'     => Mage::helper('checkout')->__('Area/incode'),
-			'required'  => true,
+//			'required'  => true,
 		));
 
 		$collection = Mage::getModel('queen_skip/permit')->getCollection();
