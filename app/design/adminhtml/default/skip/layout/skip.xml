@@ -27,9 +27,9 @@
             </action>
         </reference>
     </default>
-    <adminhtml_permit_index>
+    <skip_adminhtml_permit_index>
         <reference name="content">
             <block type="queen_skip/adminhtml_permit" name="queen_skip_permit"></block>
         </reference>
-    </adminhtml_permit_index>
+    </skip_adminhtml_permit_index>
 </layout>

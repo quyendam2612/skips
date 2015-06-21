@@ -38,24 +38,28 @@ class Queen_Skip_Block_Adminhtml_Permit_Grid extends Mage_Adminhtml_Block_Widget
 				'index' => 'id'
 			)
 		);
+
 		$this->addColumn('authority',
 			array(
 				'header'=> $this->__('Authority'),
 				'index' => 'authority'
 			)
 		);
+
 		$this->addColumn('name',
 			array(
 				'header'=> $this->__('Name'),
 				'index' => 'name'
 			)
 		);
+
 		$this->addColumn('duration',
 			array(
 				'header'=> $this->__('Duration'),
 				'index' => 'duration'
 			)
 		);
+
 		$this->addColumn('price',
 			array(
 				'header'=> $this->__('Price'),
