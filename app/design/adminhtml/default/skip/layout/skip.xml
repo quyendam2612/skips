@@ -37,4 +37,9 @@
             <block type="queen_skip/adminhtml_postcode" name="queen_skip_postcode"></block>
         </reference>
     </skip_adminhtml_postcode_index>
+    <skip_adminhtml_town_index>
+        <reference name="content">
+            <block type="queen_skip/adminhtml_town" name="queen_skip_town"></block>
+        </reference>
+    </skip_adminhtml_town_index>
 </layout>

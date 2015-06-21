@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Queen_Skip>
-            <version>0.2.0</version>
+            <version>0.3.0</version>
         </Queen_Skip>
     </modules>
     <global>
@@ -20,6 +20,9 @@
                     <postcode>
                         <table>queen_skip_postcode</table>
                     </postcode>
+                    <town>
+                        <table>queen_skip_town</table>
+                    </town>
                 </entities>
             </queen_skip_mysql4>
         </models>
@@ -75,6 +78,11 @@
                         <sort_order>902</sort_order>
                         <action>skip/adminhtml_postcode</action>
                     </skip_postcode>
+                    <skip_town>
+                        <title>SKIP - Manage Town</title>
+                        <sort_order>903</sort_order>
+                        <action>skip/adminhtml_town</action>
+                    </skip_town>
                 </children>
             </catalog>
         </menu>
@@ -90,6 +98,9 @@
                                 <skip_postcode>
                                     <title>SKIP - Manage Postcode</title>
                                 </skip_postcode>
+                                <skip_town>
+                                    <title>SKIP - Manage Town</title>
+                                </skip_town>
                             </children>
                         </catalog>
                     </children>

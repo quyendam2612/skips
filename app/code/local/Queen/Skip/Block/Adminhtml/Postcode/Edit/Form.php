@@ -38,32 +38,65 @@ class Queen_Skip_Block_Adminhtml_Postcode_Edit_Form extends Mage_Adminhtml_Block
 			));
 		}
 
-		$fieldset->addField('authority', 'text', array(
-			'name'      => 'authority',
-			'label'     => Mage::helper('checkout')->__('Authority'),
-			'title'     => Mage::helper('checkout')->__('Name'),
+		$fieldset->addField('town', 'select', array(
+			'name'      => 'town',
+			'label'     => Mage::helper('checkout')->__('Town'),
+			'title'     => Mage::helper('checkout')->__('Town'),
+			'required'  => true,
+			'values'    => Mage::getModel('queen_skip/town')->getCollection()->toOptionHash()
+		));
+
+		$fieldset->addField('district_from', 'text', array(
+			'name'      => 'district_from',
+			'label'     => Mage::helper('checkout')->__('District From'),
+			'title'     => Mage::helper('checkout')->__('District From'),
 			'required'  => true,
 		));
 
-		$fieldset->addField('name', 'text', array(
-			'name'      => 'name',
-			'label'     => Mage::helper('checkout')->__('Name'),
-			'title'     => Mage::helper('checkout')->__('Name'),
+		$fieldset->addField('district_to', 'text', array(
+			'name'      => 'district_to',
+			'label'     => Mage::helper('checkout')->__('District To'),
+			'title'     => Mage::helper('checkout')->__('District To'),
 			'required'  => true,
 		));
 
-		$fieldset->addField('duration', 'text', array(
-			'name'      => 'duration',
-			'label'     => Mage::helper('checkout')->__('Duration'),
-			'title'     => Mage::helper('checkout')->__('Duration'),
+		$fieldset->addField('postcode', 'text', array(
+			'name'      => 'postcode',
+			'label'     => Mage::helper('checkout')->__('Area/incode'),
+			'title'     => Mage::helper('checkout')->__('Area/incode'),
 			'required'  => true,
 		));
 
-		$fieldset->addField('price', 'text', array(
-			'name'      => 'price',
-			'label'     => Mage::helper('checkout')->__('Price'),
-			'title'     => Mage::helper('checkout')->__('Price'),
+		$collection = Mage::getModel('queen_skip/permit')->getCollection();
+		$options = array(0 => Mage::helper('core')->__('Please select'));
+		foreach ($collection as $c)
+		{
+			$options[$c->getId()] = $c->getAuthority();
+		}
+		$fieldset->addField('permit', 'select', array(
+			'name'      => 'permit',
+			'label'     => Mage::helper('checkout')->__('Permit Type'),
+			'title'     => Mage::helper('checkout')->__('Permit Type'),
 			'required'  => true,
+			'values'    => $options,
+		));
+
+		$fieldset->addField('drive', 'select', array(
+			'name'      => 'drive',
+			'label'     => Mage::helper('checkout')->__('Drive Only'),
+			'title'     => Mage::helper('checkout')->__('Drive Only'),
+			'required'  => true,
+			'values'    => array(
+				array(
+					'value'     => 0,
+					'label'     => Mage::helper('core')->__('No'),
+				),
+
+				array(
+					'value'     => 1,
+					'label'     => Mage::helper('core')->__('Yes'),
+				),
+			),
 		));
 
 		$form->setValues($model->getData());

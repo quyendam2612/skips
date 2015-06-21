@@ -1,5 +1,5 @@
 <?php
-class Queen_Skip_Block_Adminhtml_Permit_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
+class Queen_Skip_Block_Adminhtml_Town_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
 {
 	/**
 	 * Init class
@@ -8,8 +8,8 @@ class Queen_Skip_Block_Adminhtml_Permit_Edit_Form extends Mage_Adminhtml_Block_W
 	{
 		parent::__construct();
 
-		$this->setId('queen_skip_permit_form');
-		$this->setTitle($this->__('Permit Type Information'));
+		$this->setId('queen_skip_town_form');
+		$this->setTitle($this->__('Town Information'));
 	}
 
 	/**
@@ -28,7 +28,7 @@ class Queen_Skip_Block_Adminhtml_Permit_Edit_Form extends Mage_Adminhtml_Block_W
 		));
 
 		$fieldset = $form->addFieldset('base_fieldset', array(
-			'legend'    => Mage::helper('checkout')->__('Permit Type Information'),
+			'legend'    => Mage::helper('checkout')->__('Town Information'),
 			'class'     => 'fieldset-wide',
 		));
 
@@ -38,10 +38,10 @@ class Queen_Skip_Block_Adminhtml_Permit_Edit_Form extends Mage_Adminhtml_Block_W
 			));
 		}
 
-		$fieldset->addField('authority', 'text', array(
-			'name'      => 'authority',
-			'label'     => Mage::helper('checkout')->__('Authority'),
-			'title'     => Mage::helper('checkout')->__('Authority'),
+		$fieldset->addField('code', 'text', array(
+			'name'      => 'code',
+			'label'     => Mage::helper('checkout')->__('Code'),
+			'title'     => Mage::helper('checkout')->__('Code'),
 			'required'  => true,
 		));
 
@@ -49,21 +49,7 @@ class Queen_Skip_Block_Adminhtml_Permit_Edit_Form extends Mage_Adminhtml_Block_W
 			'name'      => 'name',
 			'label'     => Mage::helper('checkout')->__('Name'),
 			'title'     => Mage::helper('checkout')->__('Name'),
-			'required'  => true,
-		));
-
-		$fieldset->addField('duration', 'text', array(
-			'name'      => 'duration',
-			'label'     => Mage::helper('checkout')->__('Duration'),
-			'title'     => Mage::helper('checkout')->__('Duration'),
-			'required'  => true,
-		));
-
-		$fieldset->addField('price', 'text', array(
-			'name'      => 'price',
-			'label'     => Mage::helper('checkout')->__('Price'),
-			'title'     => Mage::helper('checkout')->__('Price'),
-			'required'  => true,
+			'required'  => true
 		));
 
 		$form->setValues($model->getData());

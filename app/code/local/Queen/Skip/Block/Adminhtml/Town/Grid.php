@@ -1,5 +1,5 @@
 <?php
-class Queen_Skip_Block_Adminhtml_Permit_Grid extends Mage_Adminhtml_Block_Widget_Grid
+class Queen_Skip_Block_Adminhtml_Town_Grid extends Mage_Adminhtml_Block_Widget_Grid
 {
 	public function __construct()
 	{
@@ -7,7 +7,7 @@ class Queen_Skip_Block_Adminhtml_Permit_Grid extends Mage_Adminhtml_Block_Widget
 
 		// Set some defaults for our grid
 		$this->setDefaultSort('id');
-		$this->setId('queen_skip_permit_grid');
+		$this->setId('queen_skip_town_grid');
 		$this->setDefaultDir('asc');
 		$this->setSaveParametersInSession(true);
 	}
@@ -15,7 +15,7 @@ class Queen_Skip_Block_Adminhtml_Permit_Grid extends Mage_Adminhtml_Block_Widget
 	protected function _getCollectionClass()
 	{
 		// This is the model we are using for the grid
-		return 'queen_skip/permit_collection';
+		return 'queen_skip/town_collection';
 	}
 
 	protected function _prepareCollection()
@@ -39,10 +39,10 @@ class Queen_Skip_Block_Adminhtml_Permit_Grid extends Mage_Adminhtml_Block_Widget
 			)
 		);
 
-		$this->addColumn('authority',
+		$this->addColumn('code',
 			array(
-				'header'=> $this->__('Authority'),
-				'index' => 'authority'
+				'header'=> $this->__('Code'),
+				'index' => 'code'
 			)
 		);
 
@@ -50,20 +50,6 @@ class Queen_Skip_Block_Adminhtml_Permit_Grid extends Mage_Adminhtml_Block_Widget
 			array(
 				'header'=> $this->__('Name'),
 				'index' => 'name'
-			)
-		);
-
-		$this->addColumn('duration',
-			array(
-				'header'=> $this->__('Duration (days)'),
-				'index' => 'duration'
-			)
-		);
-
-		$this->addColumn('price',
-			array(
-				'header'=> $this->__('Price'),
-				'index' => 'price'
 			)
 		);
 
