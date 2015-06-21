@@ -2,7 +2,7 @@
 <config>
     <modules>
         <Queen_Skip>
-            <version>0.1.0</version>
+            <version>0.2.0</version>
         </Queen_Skip>
     </modules>
     <global>
@@ -17,6 +17,9 @@
                     <permit>
                         <table>queen_skip_permit</table>
                     </permit>
+                    <postcode>
+                        <table>queen_skip_postcode</table>
+                    </postcode>
                 </entities>
             </queen_skip_mysql4>
         </models>
@@ -84,6 +87,9 @@
                                 <skip_permit>
                                     <title>SKIP - Manage Permit Type</title>
                                 </skip_permit>
+                                <skip_postcode>
+                                    <title>SKIP - Manage Postcode</title>
+                                </skip_postcode>
                             </children>
                         </catalog>
                     </children>
