@@ -34,10 +34,13 @@ class Emipro_Customoptions_Block_Adminhtml_Customoptions_Grid extends Mage_Admin
 		{
 			foreach($type as $key => $value)
 			{
-				foreach($value as $k => $v)
+				if (is_array($value) & sizeof($value))
 				{
-					$optionType[$v["value"]]=$v["label"];
+					foreach($value as $k => $v)
+					{
+						$optionType[$v["value"]]=$v["label"];
 
+					}
 				}
 			}
 		}

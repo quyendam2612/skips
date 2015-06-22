@@ -202,6 +202,7 @@ class Emipro_Customoptions_Block_Adminhtml_Customoptions_Edit_Tab_Grid extends M
             $sql = "select product_id from " . Mage::getConfig()->getTablePrefix() . "catalog_product_option where sku='$option' and product_id != " . $feature_id;
             $result = Mage::getSingleton('core/resource')->getConnection('core_read')->fetchAll($sql);
         }
+	    $prodId = array();
         foreach ($result as $obj) {
             $prodId[$obj["product_id"]] = array('position' => "0");
         }
