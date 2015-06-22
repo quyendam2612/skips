@@ -30,6 +30,11 @@
             <queen_skip>
                 <class>Queen_Skip_Block</class>
             </queen_skip>
+            <sales>
+                <rewrite>
+                    <order_info_buttons>Queen_Skip_Block_Order_Info_Buttons</order_info_buttons>
+                </rewrite>
+            </sales>
         </blocks>
         <helpers>
             <queen_skip>
