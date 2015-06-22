@@ -6,10 +6,13 @@ class Queen_Skip_CollectController extends Mage_Core_Controller_Front_Action
 		$orderId = $this->getRequest()->getParam('order_id');
 		if ($orderId) {
 			$email = Mage::getStoreConfig('queen_skip/skip_options/email');
+			$info = Mage::getStoreConfig('trans_email/ident_support/name');
+			$order = Mage::getModel('sales/order')->load($orderId);
+			$incrementId = $order->getIncrementId();
 
 			$to      = $email;
 			$subject = 'Request a collection';
-			$message = 'A request for collection just been made for order '.$orderId;
+			$message = 'A request for collection just been made for order '.$incrementId;
 			$headers = 'From: webmaster@example.com' . "\r\n" .
 			           'Reply-To: webmaster@example.com' . "\r\n";
 
