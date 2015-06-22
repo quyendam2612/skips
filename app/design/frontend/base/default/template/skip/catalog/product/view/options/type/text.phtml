@@ -44,8 +44,8 @@
 <?php if($showCustom): ?>
 	<script type="text/javascript">
 		jQuery(document).ready(function(){
-			jQuery("#options_<?php echo $_option->getId() ?>_text").val('<?php echo Mage::getModel('core/session')->getSelectedAddress() ?>');
-			jQuery("#options_<?php echo $_option->getId() ?>_text").attr("disabled", "disabled");
+			jQuery("#options_<?php echo $_option->getId() ?>_text").attr('value', '<?php echo Mage::getModel('core/session')->getSelectedAddress() ?>');
+			jQuery("#options_<?php echo $_option->getId() ?>_text").attr("readonly", "readOnly");
 		});
 	</script>
 <?php endif; ?>
