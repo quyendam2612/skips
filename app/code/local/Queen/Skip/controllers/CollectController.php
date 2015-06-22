@@ -13,8 +13,8 @@ class Queen_Skip_CollectController extends Mage_Core_Controller_Front_Action
 			$to      = $email;
 			$subject = 'Request a collection';
 			$message = 'A request for collection just been made for order '.$incrementId;
-			$headers = 'From: webmaster@example.com' . "\r\n" .
-			           'Reply-To: webmaster@example.com' . "\r\n";
+			$headers = 'From: ' . $info . "\r\n" .
+			           'Reply-To: ' . $info . "\r\n";
 
 			mail($to, $subject, $message, $headers);
 
