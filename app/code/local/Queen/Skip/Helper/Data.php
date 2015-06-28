@@ -22,20 +22,25 @@ class Queen_Skip_Helper_Data extends Mage_Core_Helper_Abstract
 		}
 	}
 
+    protected function _getPermitTypeIdFromPostcode($postcode)
+    {
+        $postcodes = Mage::getModel('queen_skip/postcode')->getCollection();
+        foreach($postcodes as $p)
+        {
+            $from = $p->getDistrictFrom();
+            $to = $p->getDistrictTo();
+            for($i=$from; $i<=$to; $i++)
+            {
+                $tmp = $this->getTownCode($p->getTown()).$i;
+                if (strpos(strtolower($postcode), strtolower($tmp))===0) return $p->getPermit();
+            }
+        }
+        return 0;
+    }
+
 	public function checkPostInternal($reqPos)
 	{
-		$postcodes = Mage::getModel('queen_skip/postcode')->getCollection();
-		foreach($postcodes as $p)
-		{
-			$from = $p->getDistrictFrom();
-			$to = $p->getDistrictTo();
-			for($i=$from; $i<=$to; $i++)
-			{
-				$tmp = $this->getTownCode($p->getTown()).$i;
-				if (strpos(strtolower($reqPos), strtolower($tmp))===0) return true;
-			}
-		}
-		return false;
+		return $this->_getPermitTypeIdFromPostcode($reqPos);
 	}
 
 	public function checkPostcodeAnywhere($reqPos)
@@ -58,4 +63,64 @@ class Queen_Skip_Helper_Data extends Mage_Core_Helper_Abstract
 
 		return $return;
 	}
+
+    public function getSelectedPermitType($prodId)
+    {
+        $session = Mage::getModel('core/session');
+        $add = explode(',', $session->getSelectedAddress());
+        $postcode = str_replace(' ', '', $add[0]);
+        $permitId = $this->_getPermitTypeIdFromPostcode($postcode);
+
+        $permit = Mage::getModel('queen_skip/permit')->load($permitId);
+        $permitLabel = $permit->getAuthority();
+
+        $prod = Mage::getModel('catalog/product')->load($prodId);
+        foreach ($prod->getOptions() as $opt)
+        {
+            if ($opt->getSku()=='permit-type')
+            {
+                foreach($opt->getValues() as $key => $val)
+                {
+                    if ($val->getTitle()==$permitLabel)
+                    {
+                        return $key;
+                    }
+                }
+            }
+
+        }
+        return 0;
+    }
+
+    public function updatePermitTypeForCustomOptionMaster()
+    {
+        $sku = 'customoptionmaster';
+        $pro = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
+        $pro->load($pro->getId());
+
+        $permitOption = null;
+        foreach ($pro->getOptions() as $opt)
+        {
+            if($opt->getSku()=='permit-type')
+            {
+                $permitOption = $opt;
+                foreach($opt->getValues() as $val)
+                {
+                    $val->delete();
+                }
+            }
+        }
+
+        $permits = Mage::getModel('queen_skip/permit')->getCollection();
+        foreach ($permits as $p)
+        {
+            $value = Mage::getModel('catalog/product_option_value');
+            $value->setOption($permitOption)
+                ->setTitle($p->getAuthority())
+                ->setPriceType('fixed')
+                ->setPrice($p->getPrice())
+                ->setOptionId($permitOption->getId());
+            $value->save();
+        }
+    }
 }

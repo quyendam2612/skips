@@ -1,13 +1,15 @@
 <?php
 class Queen_Skip_SearchController extends Mage_Core_Controller_Front_Action
 {
+    const MIN_LENGTH = 5;
+
 	public function indexAction()
 	{
 		$session = Mage::getModel('core/session');
 		$reqPos = $this->getRequest()->getParam('postcode-search');
-		if(strlen(str_replace(" ", "", $reqPos))!=6)
+		if(strlen(str_replace(" ", "", $reqPos))<self::MIN_LENGTH)
 		{
-			$session->addError('Postcode must be 6 characters (space is not counted).');
+			$session->addError('Postcode length must greater than 5 characters (space is not counted).');
 			goto end;
 		}
 

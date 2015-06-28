@@ -63,6 +63,9 @@ class Queen_Skip_Adminhtml_PermitController
 				Mage::getSingleton('adminhtml/session')->addSuccess($this->__('The permit type has been saved.'));
 				$this->_redirect('*/*/');
 
+                // update custom option 'permit-type' for customoptionmaster product
+                Mage::helper('queen_skip')->updatePermitTypeForCustomOptionMaster();
+
 				return;
 			}
 			catch (Mage_Core_Exception $e) {
