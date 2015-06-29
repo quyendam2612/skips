@@ -30,6 +30,11 @@
 <?php
 $showCustom = $_option->getSku() == "permit-type" ? true : false;
 $_optionId = $_option->getId();
+
+$prodId = $this->getProduct()->getId();
+$val = Mage::helper('queen_skip')->getSelectedPermitType($prodId);
+$permitRequire = Mage::getModel('core/session')->getPermitRequire();
+if(!$permitRequire && $showCustom) goto end;
 ?>
 <dt><label<?php if ($_option->getIsRequire()) echo ' class="required"' ?>><?php if ($_option->getIsRequire()) echo '<em>*</em>' ?><?php echo  $this->escapeHtml($_option->getTitle()) ?></label></dt>
 <dd<?php if ($_option->decoratedIsLast){?> class="last"<?php }?>>
@@ -43,10 +48,6 @@ $_optionId = $_option->getId();
     </div>
 </dd>
 <?php if($showCustom): ?>
-<?php
-    $prodId = $this->getProduct()->getId();
-    $val = Mage::helper('queen_skip')->getSelectedPermitType($prodId);
-?>
 <script type="text/javascript">
     <?php if ($val): ?>
     jQuery("#select_<?php echo $_optionId ?>").val(<?php echo $val ?>).change();
@@ -54,3 +55,4 @@ $_optionId = $_option->getId();
     jQuery("#select_<?php echo $_optionId ?>").attr("disabled", "disabled");
 </script>
 <?php endif; ?>
+<?php end: ?>

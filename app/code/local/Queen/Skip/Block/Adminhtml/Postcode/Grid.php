@@ -22,6 +22,16 @@ class Queen_Skip_Block_Adminhtml_Postcode_Grid extends Mage_Adminhtml_Block_Widg
 	{
 		// Get and set our collection for the grid
 		$collection = Mage::getResourceModel($this->_getCollectionClass());
+        $collection->getSelect()->joinLeft(
+            array('town' => 'queen_skip_town'),
+            'main_table.town = town.id',
+            array('name')
+        )->joinLeft(
+            array('permit' => 'queen_skip_permit'),
+            'main_table.permit = permit.id',
+            array('authority')
+        );
+//        xdebug_var_dump($collection->getSelect()->__toString());die;
 		$this->setCollection($collection);
 
 		return parent::_prepareCollection();
@@ -42,7 +52,7 @@ class Queen_Skip_Block_Adminhtml_Postcode_Grid extends Mage_Adminhtml_Block_Widg
 		$this->addColumn('town',
 			array(
 				'header'=> $this->__('Town'),
-				'index' => 'town'
+				'index' => 'name'
 			)
 		);
 
@@ -70,9 +80,16 @@ class Queen_Skip_Block_Adminhtml_Postcode_Grid extends Mage_Adminhtml_Block_Widg
 		$this->addColumn('permit',
 			array(
 				'header'=> $this->__('Permit Type'),
-				'index' => 'permit'
+				'index' => 'authority'
 			)
 		);
+
+        $this->addColumn('permit_require',
+            array(
+                'header'=> $this->__('Permit Require'),
+                'index' => 'permit_require'
+            )
+        );
 
 		$this->addColumn('drive',
 			array(

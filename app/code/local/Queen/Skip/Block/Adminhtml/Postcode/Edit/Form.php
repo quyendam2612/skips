@@ -83,9 +83,17 @@ class Queen_Skip_Block_Adminhtml_Postcode_Edit_Form extends Mage_Adminhtml_Block
 			'name'      => 'permit',
 			'label'     => Mage::helper('checkout')->__('Permit Type'),
 			'title'     => Mage::helper('checkout')->__('Permit Type'),
-			'required'  => true,
+			'required'  => false,
 			'values'    => $options,
 		));
+
+        $fieldset->addField('permit_require', 'select', array(
+            'name'      => 'permit_require',
+            'label'     => Mage::helper('core')->__('Is Permit Require?'),
+            'title'     => Mage::helper('core')->__('Is Permit Require?'),
+            'required'  => false,
+            'values'    => array(0 => Mage::helper('core')->__('No'), 1 => Mage::helper('core')->__('Yes'))
+        ));
 
 		$fieldset->addField('drive', 'select', array(
 			'name'      => 'drive',

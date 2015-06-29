@@ -32,7 +32,11 @@ class Queen_Skip_Helper_Data extends Mage_Core_Helper_Abstract
             for($i=$from; $i<=$to; $i++)
             {
                 $tmp = $this->getTownCode($p->getTown()).$i;
-                if (strpos(strtolower($postcode), strtolower($tmp))===0) return $p->getPermit();
+                if (strpos(strtolower($postcode), strtolower($tmp))===0)
+                {
+                    Mage::getModel('core/session')->setPermitRequire($p->getPermitRequire());
+                    return $p->getPermit();
+                }
             }
         }
         return 0;
