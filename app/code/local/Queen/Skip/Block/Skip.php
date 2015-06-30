@@ -28,7 +28,7 @@ class Queen_Skip_Block_Skip extends Mage_Core_Block_Template
                 'product_name'  => $prod->getName(),
                 'order_id'      => $order->getIncrementId(),
                 'status'        => $status,
-                'collect_date'  => ($c->getCollectDate()) ? date('m/d/Y', $c->getCollectDate()) : null
+                'collect_date'  => ($c->getCollectDate()) ? $c->getCollectDate() : null
             );
         }
         return $result;

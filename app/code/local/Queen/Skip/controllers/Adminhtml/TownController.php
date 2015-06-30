@@ -112,4 +112,28 @@ class Queen_Skip_Adminhtml_TownController
 		return Mage::getSingleton('admin/session')->isAllowed('catalog/queen_skip_town');
 	}
 
+    public function deleteAction()
+    {
+        if($this->getRequest()->getParam('id') > 0)
+        {
+            try
+            {
+                $testModel = Mage::getModel('queen_skip/town');
+                $testModel->setId($this->getRequest()
+                    ->getParam('id'))
+                    ->delete();
+                Mage::getSingleton('adminhtml/session')
+                    ->addSuccess('Delete successfully');
+                $this->_redirect('*/*/');
+            }
+            catch (Exception $e)
+            {
+                Mage::getSingleton('adminhtml/session')
+                    ->addError($e->getMessage());
+                $this->_redirect('*/*/edit', array('id' => $this->getRequest()->getParam('id')));
+            }
+        }
+        $this->_redirect('*/*/');
+    }
+
 }

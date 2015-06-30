@@ -20,18 +20,22 @@ $hiringSkips = $this->getHiringSkips();
     </thead>
     <tbody>
     <?php foreach ($hiringSkips as $key => $s): ?>
-    <?php $collectDate = $s['collect_date']; ?>
+    <?php $collectDate = $s['collect_date'];?>
     <tr class="first odd">
         <td class="prod-name"><?php echo $s['product_name'] ?></td>
         <td class="order-id"><?php echo $s['order_id'] ?></td>
         <td class="status"><?php echo $s['status'] ?></td>
         <td class="action">
+            <?php if("WORKING"==$s['status']) { ?>
             <form method="POST" action="<?php echo Mage::getUrl('skip/skip/request'); ?>">
                 <input type="hidden" name="skip-id" value="<?php echo $key; ?>" />
                 <input style="width: 120px;" type="text" name="collect-date" class="date-picker"
                     <?php echo ($collectDate) ? "value='$collectDate' disabled='disabled'" : "" ; ?> />
                 <button class="collect-date-submit" type="submit" disabled="disabled"><span><span><?php echo $this->__("REQUEST") ?></span></span></button>
             </form>
+            <?php } else { ?>
+                <span><span><?php echo $this->__("REQUESTED"); ?></span></span>
+            <?php } ?>
         </td>
     </tr>
     <?php endforeach; ?>

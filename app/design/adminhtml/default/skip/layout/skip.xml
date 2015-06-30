@@ -42,4 +42,9 @@
             <block type="queen_skip/adminhtml_town" name="queen_skip_town"></block>
         </reference>
     </skip_adminhtml_town_index>
+    <skip_adminhtml_skip_index>
+        <reference name="content">
+            <block type="queen_skip/adminhtml_skip" name="queen_skip_skip"></block>
+        </reference>
+    </skip_adminhtml_skip_index>
 </layout>

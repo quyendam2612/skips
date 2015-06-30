@@ -70,14 +70,14 @@
             </updates>
         </layout>
         <events>
-            <sales_order_save_after>
+            <sales_order_place_after>
                 <observers>
                     <add_hiring_skip>
                         <class>Queen_Skip_Model_Observer</class>
                         <method>addHiringSkip</method>
                     </add_hiring_skip>
                 </observers>
-            </sales_order_save_after>
+            </sales_order_place_after>
         </events>
     </frontend>
     <admin>
@@ -110,6 +110,11 @@
                         <sort_order>903</sort_order>
                         <action>skip/adminhtml_town</action>
                     </skip_town>
+                    <skip_collection>
+                        <title>SKIP - Manage Collection</title>
+                        <sort_order>904</sort_order>
+                        <action>skip/adminhtml_skip</action>
+                    </skip_collection>
                 </children>
             </catalog>
         </menu>
@@ -131,6 +136,9 @@
                                 <skip_town>
                                     <title>SKIP - Manage Town</title>
                                 </skip_town>
+                                <skip_collection>
+                                    <title>SKIP - Manage Collection</title>
+                                </skip_collection>
                             </children>
                         </catalog>
                         <system>

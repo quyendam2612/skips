@@ -29,7 +29,7 @@ class Queen_Skip_SkipController extends Mage_Core_Controller_Front_Action
             $collectDate = $params['collect-date'];
 
             $skip = Mage::getModel('queen_skip/skip')->load($skipId);
-            $skip->setCollectDate(strtotime($collectDate));
+            $skip->setCollectDate($collectDate);
             $skip->setStatus(1);
             $skip->save();
 
