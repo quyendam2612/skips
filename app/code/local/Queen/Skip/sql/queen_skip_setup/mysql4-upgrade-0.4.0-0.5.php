@@ -17,6 +17,10 @@ CREATE TABLE IF NOT EXISTS `queen_skip_skip` (
 `status` int(1) NOT NULL,
 `collect_date` varchar(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ALTER TABLE `queen_skip_skip` ADD PRIMARY KEY (`id`);
+ALTER TABLE `queen_skip_skip` MODIFY `id` int(6) NOT NULL AUTO_INCREMENT;
+
 ");
 
 $installer->endSetup();
