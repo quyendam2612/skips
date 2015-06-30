@@ -14,6 +14,9 @@
             <queen_skip_mysql4>
                 <class>Queen_Skip_Model_Mysql4</class>
                 <entities>
+                    <skip>
+                        <table>queen_skip_skip</table>
+                    </skip>
                     <permit>
                         <table>queen_skip_permit</table>
                     </permit>
@@ -66,6 +69,16 @@
                 </skip>
             </updates>
         </layout>
+        <events>
+            <sales_order_save_after>
+                <observers>
+                    <add_hiring_skip>
+                        <class>Queen_Skip_Model_Observer</class>
+                        <method>addHiringSkip</method>
+                    </add_hiring_skip>
+                </observers>
+            </sales_order_save_after>
+        </events>
     </frontend>
     <admin>
         <routers>

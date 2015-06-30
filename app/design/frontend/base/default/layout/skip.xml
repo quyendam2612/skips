@@ -46,7 +46,26 @@
     </catalog_product_view>
     <skip_search_index>
         <reference name="content">
-            <block type="queen_skip/search" template="skip/search.phtml" as="skipSearch" />
+            <block type="queen_skip/search" template="skip/search.phtml" as="skipSearch"/>
         </reference>
     </skip_search_index>
+    <customer_account>
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="queen_skip">
+                <name>skips</name>
+                <path>skip/skip/index</path>
+                <label>Hiring Skips</label>
+            </action>
+        </reference>
+    </customer_account>
+    <skip_skip_index>
+        <update handle="customer_account" />
+        <reference name="my.account.wrapper">
+            <block type="customer/account_dashboard" name="customer.account.link.back"
+                    template="customer/account/link/back.phtml"/>
+        </reference>
+        <reference name="content">
+            <block type="queen_skip/skip" template="skip/customer/hiring-skips.phtml" />
+        </reference>
+    </skip_skip_index>
 </layout>

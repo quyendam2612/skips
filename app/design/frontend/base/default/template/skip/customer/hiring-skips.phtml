@@ -1,0 +1,54 @@
+<style type="text/css">
+</style>
+<?php
+$hiringSkips = $this->getHiringSkips();
+?>
+<table class="data-table hiring-skips" id="hiring-skips-table">
+    <colgroup>
+        <col>
+        <col width="1">
+        <col width="1">
+        <col>
+    </colgroup>
+    <thead>
+    <tr class="first last">
+        <th class="prod-name"><?php echo $this->__("Skip Name") ?></th>
+        <th class="order-id"><?php echo $this->__("Order ID") ?></th>
+        <th class="status"><?php echo $this->__("Status") ?></th>
+        <th class="action"><?php echo $this->__("Request a collection") ?></th>
+    </tr>
+    </thead>
+    <tbody>
+    <?php foreach ($hiringSkips as $key => $s): ?>
+    <?php $collectDate = $s['collect_date']; ?>
+    <tr class="first odd">
+        <td class="prod-name"><?php echo $s['product_name'] ?></td>
+        <td class="order-id"><?php echo $s['order_id'] ?></td>
+        <td class="status"><?php echo $s['status'] ?></td>
+        <td class="action">
+            <form method="POST" action="<?php echo Mage::getUrl('skip/skip/request'); ?>">
+                <input type="hidden" name="skip-id" value="<?php echo $key; ?>" />
+                <input style="width: 120px;" type="text" name="collect-date" class="date-picker"
+                    <?php echo ($collectDate) ? "value='$collectDate' disabled='disabled'" : "" ; ?> />
+                <button class="collect-date-submit" type="submit" disabled="disabled"><span><span><?php echo $this->__("REQUEST") ?></span></span></button>
+            </form>
+        </td>
+    </tr>
+    <?php endforeach; ?>
+    </tbody>
+</table>
+<script type="text/javascript">
+    (function($) {
+        var skipDate = $('.date-picker');
+        skipDate.datepick({
+            minDate: new Date(),
+            maxDate: '+1y',
+            monthsToShow: 1,
+            altFormat: 'mm/dd/yyyy',
+            onSelect: function(dates) {
+                var submitBtn = $(this).parent().find(".collect-date-submit");
+                submitBtn.removeAttr('disabled');
+            }
+        });
+    })(jQuery);
+</script>
