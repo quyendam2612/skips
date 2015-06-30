@@ -29,12 +29,24 @@
 <?php $_option = $this->getOption() ?>
 <?php
 $showCustom = $_option->getSku() == "permit-type" ? true : false;
+$dropoff = $_option->getSku() == "drop-off" ? true : false;
 $_optionId = $_option->getId();
 
 $prodId = $this->getProduct()->getId();
 $val = Mage::helper('queen_skip')->getSelectedPermitType($prodId);
-$permitRequire = Mage::getModel('core/session')->getPermitRequire();
-if(!$permitRequire && $showCustom) goto end;
+$permitRequire = 1;//Mage::getModel('core/session')->getPermitRequire(); ignore this field TODO: remove this from  admin
+//if(!$permitRequire && $showCustom) goto end;
+if ($dropoff)
+{
+    $permitRequireDropoffIds = array();
+    foreach($_option->getValues() as $dropoffVal)
+    {
+        if($dropoffVal->getSku()=='permit-require')
+        {
+            $permitRequireDropoffIds[] = $dropoffVal->getOptionTypeId();
+        }
+    }
+}
 ?>
 <dt><label<?php if ($_option->getIsRequire()) echo ' class="required"' ?>><?php if ($_option->getIsRequire()) echo '<em>*</em>' ?><?php echo  $this->escapeHtml($_option->getTitle()) ?></label></dt>
 <dd<?php if ($_option->decoratedIsLast){?> class="last"<?php }?>>
@@ -45,14 +57,35 @@ if(!$permitRequire && $showCustom) goto end;
                 <span id="options-<?php echo $_option->getId() ?>-container"></span>
             <?php endif; ?>
         <?php endif;?>
+        <?php if($showCustom): ?>
+            <input type="hidden" name="options[<?php echo $_optionId; ?>]" id="permit-type-input" />
+        <?php endif; ?>
     </div>
 </dd>
+<?php if($dropoff): ?>
+    <script type="text/javascript">
+        (function($){
+            $(".permit-type-dropdown").val($(".permit-type-dropdown option:eq(1)").val()).change();
+            $("#select_<?php echo $_optionId ?>").change(function(){
+                if( $.inArray($(this).val(), <?php echo json_encode($permitRequireDropoffIds) ?>) != "-1")
+                {
+                    <?php if ($val): ?>
+                        $(".permit-type-dropdown").val(<?php echo $val ?>).change();
+                    <?php endif; ?>
+                } else {
+                    $(".permit-type-dropdown").val($(".permit-type-dropdown option:eq(1)").val()).change();
+                }
+            });
+        })(jQuery);
+    </script>
+<?php endif; ?>
 <?php if($showCustom): ?>
 <script type="text/javascript">
-    <?php if ($val): ?>
-    jQuery("#select_<?php echo $_optionId ?>").val(<?php echo $val ?>).change();
-    <?php endif; ?>
-    jQuery("#select_<?php echo $_optionId ?>").attr("disabled", "disabled");
+    jQuery("#select_<?php echo $_optionId ?>").prop("disabled", true);
+    jQuery("#select_<?php echo $_optionId ?>").addClass("permit-type-dropdown");
+    jQuery("#select_<?php echo $_optionId ?>").change(function(){
+        jQuery("#permit-type-input").val(jQuery(this).val());
+    })
 </script>
 <?php endif; ?>
-<?php end: ?>
+<?php //end: ?>
