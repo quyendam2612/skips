@@ -124,6 +124,12 @@ class Queen_Skip_Helper_Data extends Mage_Core_Helper_Abstract
                 ->setPriceType('fixed')
                 ->setPrice($p->getPrice())
                 ->setOptionId($permitOption->getId());
+            if(strtolower($p->getAuthority())=="none")
+            {
+                $value->setSortOrder(0);
+            } else {
+                $value->setSortOrder(1);
+            }
             $value->save();
         }
     }
