@@ -45,6 +45,8 @@ if ($_element->getId()=='skip_date') { ?>
 	<script type="text/javascript">
 		var skipDate = jQuery('#skip-date');
 		skipDate.datepick({
+            minDate: new Date(),
+            maxDate: '+1y',
 			multiSelect: 9999,
 			monthsToShow: 1,
 			showTrigger: '<img id="skip-date-trigger" src="∂/skin/adminhtml/default/default/images/grid-cal.gif" />',
@@ -54,7 +56,20 @@ if ($_element->getId()=='skip_date') { ?>
 				jQuery("#skip_date").val(jQuery("#altField").val());
 			}
 		});
-		skipDate.datepick('setDate', jQuery("#skip_date").val().split(','));
+        var currentDates = jQuery("#skip_date").val().split(',');
+        var positiveDates = [];
+        var today = new Date();
+        today.setHours(0,0,0,0);
+        for (var i = 0; i < currentDates.length; i++)
+        {
+            var date = new Date(currentDates[i]);
+            date.setHours(0,0,0,0);
+            if(date >= today)
+            {
+                positiveDates.push(currentDates[i]);
+            }
+        }
+		skipDate.datepick('setDate', positiveDates);
 	</script>
 <?php } else { ?>
 	<?php $this->checkFieldDisable() ?>
