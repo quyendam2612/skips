@@ -39,6 +39,8 @@ class Queen_Skip_Block_Adminhtml_Postcode_Grid extends Mage_Adminhtml_Block_Widg
 
 	protected function _prepareColumns()
 	{
+        $yesnoOptions = array('0' => 'No','1' => 'Yes','' => 'No');
+
 		// Add the columns that should appear in the grid
 		$this->addColumn('id',
 			array(
@@ -87,14 +89,18 @@ class Queen_Skip_Block_Adminhtml_Postcode_Grid extends Mage_Adminhtml_Block_Widg
         $this->addColumn('permit_require',
             array(
                 'header'=> $this->__('Permit Require'),
-                'index' => 'permit_require'
+                'index' => 'permit_require',
+                'type'      => 'options',
+                'options'   => $yesnoOptions,
             )
         );
 
 		$this->addColumn('drive',
 			array(
 				'header'=> $this->__('Drive Only'),
-				'index' => 'drive'
+				'index' => 'drive',
+                'type'      => 'options',
+                'options'   => $yesnoOptions,
 			)
 		);
 
