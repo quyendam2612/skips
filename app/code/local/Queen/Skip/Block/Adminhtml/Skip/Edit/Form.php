@@ -57,6 +57,7 @@ class Queen_Skip_Block_Adminhtml_Skip_Edit_Form extends Mage_Adminhtml_Block_Wid
             'label'     => Mage::helper('core')->__('Customer Email'),
             'title'     => Mage::helper('core')->__('Customer Email'),
             'required'  => true,
+            'class'     => 'validate-email'
         ));
 
         $statusOptions = array(
@@ -73,11 +74,13 @@ class Queen_Skip_Block_Adminhtml_Skip_Edit_Form extends Mage_Adminhtml_Block_Wid
             'options'   => $statusOptions
         ));
 
-        $fieldset->addField('collect_date', 'text', array(
+        $fieldset->addField('collect_date', 'date', array(
             'name'      => 'collect_date',
             'label'     => Mage::helper('core')->__('Collect Date'),
             'title'     => Mage::helper('core')->__('Collect Date'),
             'required'  => true,
+            'image'     => $this->getSkinUrl('images/grid-cal.gif'),
+            'format'    => Mage::app()->getLocale()->getDateFormat(Mage_Core_Model_Locale::FORMAT_TYPE_SHORT)
         ));
 
 
