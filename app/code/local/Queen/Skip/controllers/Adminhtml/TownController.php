@@ -55,13 +55,25 @@ class Queen_Skip_Adminhtml_TownController
 	{
 		if ($postData = $this->getRequest()->getPost()) {
 			$model = Mage::getSingleton('queen_skip/town');
-			$model->setData($postData);
 
 			try {
-				$model->save();
+                $model->load($postData['code'], 'code');
+                if ($model->getId())
+                {
+                    $model->setCode($postData['code']);
+                    $model->setName($postData['name']);
 
-				Mage::getSingleton('adminhtml/session')->addSuccess($this->__('The town type has been saved.'));
-				$this->_redirect('*/*/');
+                    $model->save();
+
+                    Mage::getSingleton('adminhtml/session')->addError($this->__('Duplicated town. Updated existing one.'));
+                    $this->_redirect('*/*/');
+                } else {
+                    $model->setData($postData);
+                    $model->save();
+
+                    Mage::getSingleton('adminhtml/session')->addSuccess($this->__('The town type has been saved.'));
+                    $this->_redirect('*/*/');
+                }
 
 				return;
 			}
