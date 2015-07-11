@@ -209,7 +209,12 @@ class Emipro_Customoptions_Adminhtml_IndexController extends Mage_Adminhtml_Cont
         $sku = Mage::getModel("catalog/product_option")->load($optionId)->getData("sku");
         if ($this->getRequest()->getParam("del")) {
 
-            $this->_redirect('*/*/deletecategory', array('data' => implode(",", $data["categories"]), "id" => $optionId, "sku" => $sku));
+            if (isset($data['categories'])) {
+                $this->_redirect('*/*/deletecategory', array('data' => implode(",", $data["categories"]), "id" => $optionId, "sku" => $sku));
+            } else {
+                Mage::getSingleton('adminhtml/session')->addError(Mage::helper('customoptions')->__('Please select category'));
+                $this->_redirect('*/*/editcategory', array('id' => $optionId, 'sku' => $sku));
+            }
             return;
         }
         $feature_id = Mage::getModel('catalog/product')->getIdBySku('productfeatures');
