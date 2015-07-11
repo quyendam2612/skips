@@ -59,11 +59,18 @@ class Queen_Skip_Block_Adminhtml_Skip_Edit_Form extends Mage_Adminhtml_Block_Wid
             'required'  => true,
         ));
 
-        $fieldset->addField('status', 'text', array(
+        $statusOptions = array(
+            '0' => 'Working',
+            '1' => 'Requested',
+            '2'  => 'Collected'
+        );
+        $fieldset->addField('status', 'select', array(
             'name'      => 'status',
             'label'     => Mage::helper('core')->__('Status'),
             'title'     => Mage::helper('core')->__('Status'),
-            'required'  => false
+            'required'  => false,
+            'type'      => '',
+            'options'   => $statusOptions
         ));
 
         $fieldset->addField('collect_date', 'text', array(

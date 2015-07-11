@@ -86,11 +86,18 @@ class Queen_Skip_Block_Adminhtml_Skip_Grid extends Mage_Adminhtml_Block_Widget_G
             )
         );
 
+        $statusOptions = array(
+            '0' => 'Working',
+            '1' => 'Requested',
+            '2'  => 'Collected'
+        );
         $this->addColumn('status',
             array(
                 'header'=> $this->__('Status (WORKING=0,REQUESTED=1,COLLECTED=2)'),
                 'index' => 'status',
-                'filter_index'  => '`main_table`.`status`'
+                'filter_index'  => '`main_table`.`status`',
+                'type'      => 'options',
+                'options'   => $statusOptions,
             )
         );
 

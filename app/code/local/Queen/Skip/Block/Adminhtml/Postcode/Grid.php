@@ -39,7 +39,7 @@ class Queen_Skip_Block_Adminhtml_Postcode_Grid extends Mage_Adminhtml_Block_Widg
 
 	protected function _prepareColumns()
 	{
-        $yesnoOptions = array('0' => 'No','1' => 'Yes','' => 'No');
+        $yesnoOptions = array('0' => 'No', '1' => 'Yes', '' => 'No');
 
 		// Add the columns that should appear in the grid
 		$this->addColumn('id',
