@@ -25,6 +25,43 @@
             <block type="core/template" name="top.search" as="topSearch" template="skip/catalogsearch/form.mini.phtml"/>
         </reference>
     </default>
+    <catalog_category_default>
+        <reference name="content">
+            <action method="unsetChild">
+                <name>category.products</name>
+            </action>
+            <block type="catalog/category_view" name="category.products" template="skip/catalog/category/selected.phtml">
+                <block type="catalog/product_list" name="product_list" template="catalog/product/list.phtml">
+                    <block type="catalog/product_list_toolbar" name="product_list_toolbar" template="catalog/product/list/toolbar.phtml">
+                        <block type="page/html_pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="addColumnCountLayoutDepend">
+                        <layout>empty</layout>
+                        <count>6</count>
+                    </action>
+                    <action method="addColumnCountLayoutDepend">
+                        <layout>one_column</layout>
+                        <count>5</count>
+                    </action>
+                    <action method="addColumnCountLayoutDepend">
+                        <layout>two_columns_left</layout>
+                        <count>4</count>
+                    </action>
+                    <action method="addColumnCountLayoutDepend">
+                        <layout>two_columns_right</layout>
+                        <count>4</count>
+                    </action>
+                    <action method="addColumnCountLayoutDepend">
+                        <layout>three_columns</layout>
+                        <count>3</count>
+                    </action>
+                    <action method="setToolbarBlockName">
+                        <name>product_list_toolbar</name>
+                    </action>
+                </block>
+            </block>
+        </reference>
+    </catalog_category_default>
     <catalog_product_view>
         <reference name="product.info.options">
             <action method="addOptionRenderer">
@@ -59,13 +96,13 @@
         </reference>
     </customer_account>
     <skip_skip_index>
-        <update handle="customer_account" />
+        <update handle="customer_account"/>
         <reference name="my.account.wrapper">
             <block type="customer/account_dashboard" name="customer.account.link.back"
                     template="customer/account/link/back.phtml"/>
         </reference>
         <reference name="content">
-            <block type="queen_skip/skip" template="skip/customer/hiring-skips.phtml" />
+            <block type="queen_skip/skip" template="skip/customer/hiring-skips.phtml"/>
         </reference>
     </skip_skip_index>
 </layout>
