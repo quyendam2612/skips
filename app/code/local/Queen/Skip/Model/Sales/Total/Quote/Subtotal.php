@@ -61,7 +61,7 @@ class Queen_Skip_Model_Sales_Total_Quote_Subtotal extends Mage_Tax_Model_Sales_T
                     $baseTaxable -= $qty*$permitPrice;
                 }
                 // END HACKING
-                
+
                 $rowTaxExact     = $calc->calcTaxAmount($taxable, $rate, true, false);
                 $rowTax          = $this->_deltaRound($rowTaxExact, $rate, true);
                 $baseRowTaxExact = $calc->calcTaxAmount($baseTaxable, $rate, true, false);

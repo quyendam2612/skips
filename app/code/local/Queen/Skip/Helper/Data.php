@@ -144,4 +144,45 @@ class Queen_Skip_Helper_Data extends Mage_Core_Helper_Abstract
         }
 
     }
+
+    public function getPermitFromQuoteItem($item)
+    {
+        $options = $item->getProduct()
+            ->getTypeInstance(true)
+            ->getOrderOptions($item->getProduct());
+        if (isset($options['options']))
+        {
+            foreach ($options['options'] as $opt)
+            {
+                if (@$opt['label'] == 'Permit Type')
+                {
+                    $label = ($opt['value']);
+
+                    $selectedOptId = $opt['option_id'];
+                    $selectedOptVal = $opt['option_value'];
+
+                    $resource = Mage::getSingleton('core/resource');
+                    $readConnection = $resource->getConnection('core_read');
+                    $optionTypePriceTable = $resource->getTableName('catalog_product_option_type_price');
+                    $query = 'SELECT price FROM ' . $optionTypePriceTable . ' WHERE option_type_id = ' . $selectedOptId;
+                    $result = $readConnection->fetchOne($query);
+                    $price = intval($result);
+
+                    $permit = Mage::getModel('queen_skip/permit')->getCollection()
+                        ->addFieldToFilter('authority', array(
+                            'eq' => $label
+                        ))
+                        ->addFieldToFilter('price', array(
+                            'like' => '%'.$price.'%'
+                        ));
+                    if (sizeof($permit))
+                    {
+                        $permit = $permit->getFirstItem();
+                        return $permit->getData();
+                    }
+                }
+            }
+        }
+    }
+
 }

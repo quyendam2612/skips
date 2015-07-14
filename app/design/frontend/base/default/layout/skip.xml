@@ -105,4 +105,9 @@
             <block type="queen_skip/skip" template="skip/customer/hiring-skips.phtml"/>
         </reference>
     </skip_skip_index>
+    <checkout_cart_index>
+        <reference name="checkout.cart">
+            <action method="addItemRender"><type>simple</type><block>checkout/cart_item_renderer</block><template>skip/checkout/cart/item/default.phtml</template></action>
+        </reference>
+    </checkout_cart_index>
 </layout>
