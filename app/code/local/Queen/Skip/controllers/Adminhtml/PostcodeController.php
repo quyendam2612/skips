@@ -55,9 +55,21 @@ class Queen_Skip_Adminhtml_PostcodeController
 	{
 		if ($postData = $this->getRequest()->getPost()) {
 			$model = Mage::getSingleton('queen_skip/postcode');
-			$model->setData($postData);
 
 			try {
+                $collection = Mage::getModel('queen_skip/postcode')->getCollection()
+                    ->addFieldToFilter('town', array('eq' => $postData['town']))
+                    ->addFieldToFilter('district_from', array('eq' => $postData['district_from']))
+                    ->addFieldToFilter('district_to', array('eq' => $postData['district_to']));
+
+                if(sizeof($collection))
+                {
+                    Mage::getSingleton('adminhtml/session')->addError($this->__('Duplicated record. Please check your Town, District from & District to.'));
+                    $this->_redirect('*/*/');
+                    return;
+                }
+
+                $model->setData($postData);
 				$model->save();
 
 				Mage::getSingleton('adminhtml/session')->addSuccess($this->__('The postcode type has been saved.'));
