@@ -35,6 +35,7 @@ if ($_element->getId()=='skip_date') { ?>
 	<tr>
 		<td class="label"><?php echo trim($this->getElementLabelHtml()) ?></td>
 		<td class="skip-calendar">
+            <?php echo $this->__('Please select unavailable dates, the dates are not selected will be displayed as available on front-end. The dates in past also are ignored automatically.') ?>
 			<input type="hidden" id="altField" />
 			<span id="skip-date" />
 		</td>

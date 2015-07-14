@@ -126,7 +126,7 @@
 					var activeDates = "<?php echo $activeDates ?>";
 					activeDates = activeDates.split(',');
 					return {
-						selectable: (jQuery.inArray(dateStr, activeDates) !== -1)
+						selectable: (jQuery.inArray(dateStr, activeDates) == -1)
 					};
 				}
 			});
