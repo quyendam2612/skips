@@ -98,39 +98,50 @@ class Queen_Skip_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function updatePermitTypeForCustomOptionMaster()
     {
-        $sku = 'customoptionmaster';
-        $pro = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
-        $pro->load($pro->getId());
-
-        $permitOption = null;
-        foreach ($pro->getOptions() as $opt)
+        $option = Mage::getResourceModel('catalog/product_option_collection')->addFieldToSelect('product_id');
+        $option->getSelect()->where('main_table.sku = "permit-type"')
+            ->group('main_table.product_id');
+        $entityIds = new Zend_Db_Expr($option->getSelect()->__toString());
+        $collection = Mage::getResourceModel('catalog/product_collection');
+        $collection->getSelect()->where('e.entity_id in(?)', $entityIds);
+        foreach ($collection as $c)
         {
-            if($opt->getSku()=='permit-type')
+            $sku = $c->getSku();
+//            $sku = 'customoptionmaster';
+            $pro = Mage::getModel('catalog/product')->loadByAttribute('sku', $sku);
+            $pro->load($pro->getId());
+
+            $permitOption = null;
+            foreach ($pro->getOptions() as $opt)
             {
-                $permitOption = $opt;
-                foreach($opt->getValues() as $val)
+                if($opt->getSku()=='permit-type')
                 {
-                    $val->delete();
+                    $permitOption = $opt;
+                    foreach($opt->getValues() as $val)
+                    {
+                        $val->delete();
+                    }
                 }
             }
+
+            $permits = Mage::getModel('queen_skip/permit')->getCollection();
+            foreach ($permits as $p)
+            {
+                $value = Mage::getModel('catalog/product_option_value');
+                $value->setOption($permitOption)
+                    ->setTitle($p->getAuthority())
+                    ->setPriceType('fixed')
+                    ->setPrice($p->getPrice())
+                    ->setOptionId($permitOption->getId());
+                if(strtolower($p->getAuthority())=="none")
+                {
+                    $value->setSortOrder(0);
+                } else {
+                    $value->setSortOrder(1);
+                }
+                $value->save();
+            }
         }
 
-        $permits = Mage::getModel('queen_skip/permit')->getCollection();
-        foreach ($permits as $p)
-        {
-            $value = Mage::getModel('catalog/product_option_value');
-            $value->setOption($permitOption)
-                ->setTitle($p->getAuthority())
-                ->setPriceType('fixed')
-                ->setPrice($p->getPrice())
-                ->setOptionId($permitOption->getId());
-            if(strtolower($p->getAuthority())=="none")
-            {
-                $value->setSortOrder(0);
-            } else {
-                $value->setSortOrder(1);
-            }
-            $value->save();
-        }
     }
 }
