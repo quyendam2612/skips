@@ -28,6 +28,11 @@
                     </town>
                 </entities>
             </queen_skip_mysql4>
+            <tax>
+                <rewrite>
+                    <sales_total_quote_subtotal>Queen_Skip_Model_Sales_Total_Quote_Subtotal</sales_total_quote_subtotal>
+                </rewrite>
+            </tax>
         </models>
         <blocks>
             <queen_skip>
