@@ -81,6 +81,7 @@ class Emipro_Customoptions_Adminhtml_IndexController extends Mage_Adminhtml_Cont
         if (isset($data["productsku"])) {
 
             $skuvalue = str_replace(array("\r\n", "\r"), ",", $data["productsku"]["sku_list"]);
+            Mage::helper('customoptions')->saveAssigned($optionId, $skuvalue, null);
             $skuarray = explode(",", $skuvalue);
             if (count($skuarray) > 0 && !empty($skuarray[0])) {
                 try {
@@ -188,9 +189,20 @@ class Emipro_Customoptions_Adminhtml_IndexController extends Mage_Adminhtml_Cont
 
             $optionModel->deleteCategory($sku, $catid);
             $write = mage::getsingleton('core/resource')->getconnection('core_write');
+
+            $assigned = Mage::helper('customoptions')->getAssignedCats();
+            foreach ($assigned as $key => $a)
+            {
+                if (in_array($a, $catid))
+                {
+                    unset($assigned[$key]);
+                }
+            }
+            Mage::helper('customoptions')->saveAssigned($optionId, null, implode(',', $assigned));
+
             Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('customoptions')->__('Option was successfully deleted from category'));
             Mage::getSingleton('adminhtml/session')->setFormData(false);
-            $this->_redirect('*/*/');
+            $this->_redirect('*/*/editcategory', array('id' => $optionId, 'sku' => $sku));
             return;
         } catch (Exception $e) {
             Mage::getSingleton('adminhtml/session')->addError($e->getMessage());
@@ -223,6 +235,7 @@ class Emipro_Customoptions_Adminhtml_IndexController extends Mage_Adminhtml_Cont
         $optionModel = Mage::getModel("customoptions/customoptionscollection");
         try {
             if (isset($data["categories"])) {
+                Mage::helper('customoptions')->saveAssigned($optionId, null, implode(',', $data["categories"]));
                 $optionModel->saveToCategory($sku, $data["categories"], $optionId);
             }
             Mage::getSingleton('adminhtml/session')->addSuccess(Mage::helper('customoptions')->__('Option was successfully saved'));

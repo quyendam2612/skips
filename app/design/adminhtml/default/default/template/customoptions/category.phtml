@@ -44,12 +44,13 @@ $i=0;
 				<td colspan = "5">
 <?php
 $_categories	=	$this->getRootCategories(1);
+$value = Mage::helper('customoptions')->getAssignedCats();
 ?>
 <?php //$_categories = Mage::getModel('catalog/category') ->load(2); ?>
 <?php if (count($_categories) > 0): ?>
 <ul id="tree<?php echo $i?>" class="ui-widget-daredevel-checkboxTree ui-widget ui-widget-content">
 <?php foreach($_categories as $_category): ?>
-        <li><input type="checkbox" name="categories[]" value="<?php echo $_category->getId() ?>" <?php echo $this->getSelectedCategory($_category->getId()); ?>/><?php echo $_category->getName() ?>
+        <li><input type="checkbox" name="categories[]" value="<?php echo $_category->getId() ?>" <?php echo $this->getSelectedCategory($_category->getId()); ?> <?php echo (in_array($_category->getId(), $value)?"checked":"" ) ?> /><?php echo $_category->getName() ?>
 			<?php $_category = Mage::getModel('catalog/category')->load($_category->getId()) ?>
 			<?php $_subcategories = $_category->getChildrenCategories() ?>
 			<?php if (count($_subcategories) > 0): ?>

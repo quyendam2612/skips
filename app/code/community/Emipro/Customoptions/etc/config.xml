@@ -1,7 +1,7 @@
 <config>
     <modules>
         <Emipro_Customoptions>
-            <version>1.1.0</version>
+            <version>1.2.0</version>
         </Emipro_Customoptions>
     </modules>
 
@@ -19,8 +19,24 @@
             </catalog>
             <customoptions>
                 <class>Emipro_Customoptions_Model</class>
+                <resourceModel>customoptions_mysql4</resourceModel>
             </customoptions>
+            <customoptions_mysql4>
+                <class>Emipro_Customoptions_Model_Mysql4</class>
+                <entities>
+                    <assigned>
+                        <table>customoptions_assigned</table>
+                    </assigned>
+                </entities>
+            </customoptions_mysql4>
         </models>
+        <resources>
+            <customoptions_setup>
+                <setup>
+                    <module>Emipro_Customoptions</module>
+                </setup>
+            </customoptions_setup>
+        </resources>
         <blocks>
             <customoptions>
                 <class>Emipro_Customoptions_Block</class>

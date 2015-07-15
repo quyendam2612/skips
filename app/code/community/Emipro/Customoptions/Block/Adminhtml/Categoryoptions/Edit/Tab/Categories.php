@@ -68,15 +68,13 @@ class Emipro_Customoptions_Block_Adminhtml_Categoryoptions_Edit_Tab_Categories e
     }
 
     public function getCategoriesRecursively($categories) {
-
-        $optionId = $this->getRequest()->getParam("id");
-        $array = '';
+        $value = Mage::helper('customoptions')->getAssignedCats();
         $array = '<ul>';
         foreach ($categories as $category) {
 
             $cat = Mage::getModel('catalog/category')->load($category->getId());
             $count = $cat->getProductCount();
-            $array .= '<li><input type="checkbox" name="categories[]" value="' . $category->getId() . '"' . $this->getSelectedCategory($category->getId()) . '" />' . $category->getName();
+            $array .= '<li><input type="checkbox" name="categories[]" value="' . $category->getId() . '"' . $this->getSelectedCategory($category->getId()) . (in_array($category->getId(), $value)?"checked":"" ) . ' />' . $category->getName();
             if ($category->hasChildren()) {
                 $children = Mage::getModel('catalog/category')->getCategories($category->getId());
                 $array .= $this->getCategoriesRecursively($children);
