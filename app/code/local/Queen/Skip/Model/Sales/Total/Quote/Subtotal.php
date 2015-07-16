@@ -48,7 +48,7 @@ class Queen_Skip_Model_Sales_Total_Quote_Subtotal extends Mage_Tax_Model_Sales_T
                             $resource = Mage::getSingleton('core/resource');
                             $readConnection = $resource->getConnection('core_read');
                             $optionTypePriceTable = $resource->getTableName('catalog_product_option_type_price');
-                            $query = 'SELECT price FROM ' . $optionTypePriceTable . ' WHERE option_type_id = ' . $selectedOptId;
+                            $query = 'SELECT price FROM ' . $optionTypePriceTable . ' WHERE option_type_id = ' . $selectedOptVal;
                             $result = $readConnection->fetchOne($query);
                             $permitPrice = floatval($result);
                         }
@@ -129,7 +129,7 @@ class Queen_Skip_Model_Sales_Total_Quote_Subtotal extends Mage_Tax_Model_Sales_T
                             $resource = Mage::getSingleton('core/resource');
                             $readConnection = $resource->getConnection('core_read');
                             $optionTypePriceTable = $resource->getTableName('catalog_product_option_type_price');
-                            $query = 'SELECT price FROM ' . $optionTypePriceTable . ' WHERE option_type_id = ' . $selectedOptId;
+                            $query = 'SELECT price FROM ' . $optionTypePriceTable . ' WHERE option_type_id = ' . $selectedOptVal;
                             $result = $readConnection->fetchOne($query);
                             $permitPrice = floatval($result);
                         }
@@ -180,7 +180,7 @@ class Queen_Skip_Model_Sales_Total_Quote_Subtotal extends Mage_Tax_Model_Sales_T
                         $resource = Mage::getSingleton('core/resource');
                         $readConnection = $resource->getConnection('core_read');
                         $optionTypePriceTable = $resource->getTableName('catalog_product_option_type_price');
-                        $query = 'SELECT price FROM ' . $optionTypePriceTable . ' WHERE option_type_id = ' . $selectedOptId;
+                        $query = 'SELECT price FROM ' . $optionTypePriceTable . ' WHERE option_type_id = ' . $selectedOptVal;
                         $result = $readConnection->fetchOne($query);
                         $permitPrice = floatval($result);
                     }
