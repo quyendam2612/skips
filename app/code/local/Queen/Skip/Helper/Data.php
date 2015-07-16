@@ -164,7 +164,7 @@ class Queen_Skip_Helper_Data extends Mage_Core_Helper_Abstract
                     $resource = Mage::getSingleton('core/resource');
                     $readConnection = $resource->getConnection('core_read');
                     $optionTypePriceTable = $resource->getTableName('catalog_product_option_type_price');
-                    $query = 'SELECT price FROM ' . $optionTypePriceTable . ' WHERE option_type_id = ' . $selectedOptId;
+                    $query = 'SELECT price FROM ' . $optionTypePriceTable . ' WHERE option_type_id = ' . $selectedOptVal;
                     $result = $readConnection->fetchOne($query);
                     $price = intval($result);
 
