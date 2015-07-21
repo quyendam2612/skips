@@ -24,27 +24,39 @@ class Queen_Skip_Helper_Data extends Mage_Core_Helper_Abstract
 
     protected function _getPermitTypeIdFromPostcode($postcode)
     {
-        $postcodes = Mage::getModel('queen_skip/postcode')->getCollection();
-        foreach($postcodes as $p)
+        $postcodeId = $this->checkPostInternal($postcode);
+
+        if ($postcodeId)
         {
-            $from = $p->getDistrictFrom();
-            $to = $p->getDistrictTo();
-            for($i=$from; $i<=$to; $i++)
-            {
-                $tmp = $this->getTownCode($p->getTown()).$i;
-                if (strpos(strtolower($postcode), strtolower($tmp))===0)
-                {
-//                    Mage::register('selected-postcode', $p->getId());
-                    return $p->getPermit();
-                }
-            }
+            $postcode = Mage::getModel('queen_skip/postcode')->load($postcodeId);
+            return intval($postcode->getPermit());
         }
         return 0;
     }
 
 	public function checkPostInternal($reqPos)
 	{
-		return $this->_getPermitTypeIdFromPostcode($reqPos);
+        $postcodes = Mage::getModel('queen_skip/postcode')->getCollection();
+        $district = 0;
+        $postcodeId = 0;
+        foreach($postcodes as $p)
+        {
+            $from = $p->getDistrictFrom();
+            $to = $p->getDistrictTo();
+            for($i=$to; $i>=$from; $i--)
+            {
+                $tmp = $this->getTownCode($p->getTown()).$i;
+                if (strpos(strtolower($reqPos), strtolower($tmp))===0)
+                {
+                    if ($i > $district)
+                    {
+                        $postcodeId = $p->getId();
+                        $district = $i;
+                    }
+                }
+            }
+        }
+        return $postcodeId;
 	}
 
 	public function checkPostcodeAnywhere($reqPos)
@@ -72,7 +84,10 @@ class Queen_Skip_Helper_Data extends Mage_Core_Helper_Abstract
     {
         $session = Mage::getModel('core/session');
         $add = explode(',', $session->getSelectedAddress());
+        if (sizeof($add)<1) return 0;
+
         $postcode = str_replace(' ', '', $add[0]);
+        // TODO: permitId need to be loaded from postcode record
         $permitId = $this->_getPermitTypeIdFromPostcode($postcode);
 
         $permit = Mage::getModel('queen_skip/permit')->load($permitId);

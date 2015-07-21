@@ -132,7 +132,12 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
             <?php if (Mage::helper('weee')->typeOfDisplay($_item, array(0, 1, 4), 'sales') && $_item->getWeeeTaxAppliedAmount()): ?>
                 <?php echo $this->helper('checkout')->formatPrice($_item->getCalculationPrice()+$_item->getWeeeTaxAppliedAmount()+$_item->getWeeeTaxDisposition()); ?>
             <?php else: ?>
-                <?php echo $this->helper('checkout')->formatPrice($_item->getCalculationPrice()) ?>
+                <?php if ($showPermit) { ?>
+                    <?php $permit = Mage::helper('queen_skip')->getPermitFromQuoteItem($_item); ?>
+                    <?php echo $this->helper('checkout')->formatPrice($_item->getCalculationPrice()-$permit['price']) ?>
+                <?php } else { ?>
+                    <?php echo $this->helper('checkout')->formatPrice($_item->getCalculationPrice()) ?>
+                <?php } ?>
             <?php endif; ?>
 
             </span>
@@ -245,7 +250,12 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
                     <?php if (Mage::helper('weee')->typeOfDisplay($_item, array(0, 1, 4), 'sales') && $_item->getWeeeTaxAppliedAmount()): ?>
                         <?php echo $this->helper('checkout')->formatPrice($_item->getRowTotal()+$_item->getWeeeTaxAppliedRowAmount()+$_item->getWeeeTaxRowDisposition()); ?>
                     <?php else: ?>
-                        <?php echo $this->helper('checkout')->formatPrice($_item->getRowTotal()) ?>
+                        <?php if ($showPermit) { ?>
+                            <?php $permit = Mage::helper('queen_skip')->getPermitFromQuoteItem($_item); ?>
+                            <?php echo $this->helper('checkout')->formatPrice($_item->getRowTotal()-$_item->getQty()*$permit['price']) ?>
+                        <?php } else { ?>
+                            <?php echo $this->helper('checkout')->formatPrice($_item->getRowTotal()) ?>
+                        <?php } ?>
                     <?php endif; ?>
                 <?php endif; ?>
 
