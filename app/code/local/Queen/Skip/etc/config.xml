@@ -43,6 +43,12 @@
                     <order_info_buttons>Queen_Skip_Block_Order_Info_Buttons</order_info_buttons>
                 </rewrite>
             </sales>
+            <catalog>
+                <rewrite>
+                    <product_view_options>Queen_Skip_Block_Catalog_Product_View_Options</product_view_options>
+                    <product_view_options_type_select>Queen_Skip_Block_Catalog_Product_View_Options_Type_Select</product_view_options_type_select>
+                </rewrite>
+            </catalog>
         </blocks>
         <helpers>
             <queen_skip>
