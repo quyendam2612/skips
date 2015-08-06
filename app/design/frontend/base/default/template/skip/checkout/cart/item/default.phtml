@@ -338,7 +338,7 @@ $canApplyMsrp = Mage::helper('catalog')->canApplyMsrp($_item->getProduct(), Mage
     <a href="<?php echo $this->getDeleteUrl() ?>" title="<?php echo $this->__('Remove Item') ?>" class="btn-remove btn-remove2"><?php echo $this->__('Remove Item') ?></a>
 </td>
 </tr>
-<?php if ($showPermit): ?>
+<?php if (@$showPermit): ?>
 <?php $permit = Mage::helper('queen_skip')->getPermitFromQuoteItem($_item); ?>
 <tr class="permit">
     <td></td>
