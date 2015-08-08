@@ -38,7 +38,7 @@ $mq-fixed-value: 1024;
  * Primary Banner
  */
 body.cms-home .main-container {
-  padding-top: 20px;
+  padding-top: 2px;
 }
 body.cms-home .slideshow-container {
   margin-top: 0;
@@ -182,4 +182,59 @@ body .promos > li {
 
 .cms-index-noroute h2.subtitle {
   display: none;
+}
+
+.the-slideshow {
+  margin-top: -20px;
+}
+.the-slideshow .direction-nav {
+  margin-bottom: 0;
+}
+
+.cms-content.row,
+.videos.row {
+  width: 100%;
+}
+.cms-content.row .col,
+.videos.row .col {
+  float: left;
+  width: 100%;
+  margin-bottom: 5px;
+}
+.cms-content.row .col img,
+.videos.row .col img {
+  width: 100%;
+}
+.cms-content.row .col,
+.videos.row .col {
+  width: 32%;
+  margin-right: 2%;
+}
+.cms-content.row .col.last,
+.videos.row .col.last {
+  margin-right: 0;
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe .ytp-watch-later-button {
+  display: none !important;
+}
+
+.video-container iframe, .video-container object, .video-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.video-container iframe, .video-container object, .video-container embed {
+  height: 32%;
 }
