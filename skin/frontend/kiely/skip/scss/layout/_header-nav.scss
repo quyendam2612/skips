@@ -87,6 +87,8 @@
     #header-nav {
         display: block; /* Force visibility */
         border-bottom: 1px solid $c-module-border-light;
+        background-color: #010101;
+        margin-top: -35px;
     }
 
 }
@@ -107,14 +109,14 @@
  * General Navigation Styles
  * ============================================ */
 
-$nav-primary-height: 30px;
+$nav-primary-height: 43px;
 
 .nav-primary {
     a {
         text-decoration: none;
         position: relative;
         display: block;
-        color: $c-text;
+        color: #ffffff;
         line-height: $nav-primary-height;
         font-family: $f-stack-special;
     }
@@ -200,7 +202,7 @@ $nav-primary-height: 30px;
     .nav-primary {
 
         a.level0 {
-            padding: 0 25px;
+            padding: 0 7px;
         }
 
         li.level0,
@@ -268,6 +270,22 @@ $nav-primary-height: 30px;
                 top: 50%;
                 margin-top: -3px;
             }
+        }
+    }
+}
+
+@include bp(min-width, $bp-large + 1 ) {
+    .nav-primary {
+        a.level0 {
+            padding: 0 11px;
+        }
+    }
+}
+
+@include bp(min-width, $bp-xlarge + 1 ) {
+    .nav-primary {
+        a.level0 {
+            padding: 0 23px;
         }
     }
 }
