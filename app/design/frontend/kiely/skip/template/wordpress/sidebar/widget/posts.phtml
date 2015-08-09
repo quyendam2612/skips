@@ -1,0 +1,32 @@
+<?php
+/**
+ * @category    Fishpig
+ * @package     Fishpig_Wordpress
+ * @license     http://fishpig.co.uk/license.txt
+ * @author      Ben Tideswell <help@fishpig.co.uk>
+ */
+?>
+<?php $posts = $this->getPosts() ?>
+<?php if (count($posts) > 0): ?>
+	<div class="block block-blog block-recent-posts">
+		<div class="block-content">
+			<div class="row">
+			<?php if ($title = $this->getTitle()): ?>
+				<h1 class="title"><?php echo strtoupper($this->__($title)) ?></h1>
+			<?php endif; ?>
+			<?php $i = 0; ?>
+			<?php foreach($posts as $post): ?>
+				<?php $i++; ?>
+				<div class="col <?php echo ($i==sizeof($posts)) ? "last" : ""; ?>">
+					<a href="<?php echo $post->getPermalink() ?>" title="<?php echo $this->htmlEscape($post->getPostTitle()) ?>">
+						<img src="<?php echo $post->getFeaturedImage()->getData('guid'); ?>" ?>
+						<h3 class="post-title">
+							<?php echo strtoupper($this->htmlEscape($post->getPostTitle())) ?>
+						</h3>
+					</a>
+				</div>
+			<?php endforeach; ?>
+			</div>
+		</div>
+	</div>
+<?php endif; ?>

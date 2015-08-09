@@ -191,25 +191,68 @@ body .promos > li {
   margin-bottom: 0;
 }
 
+.videos .title,
+.block-recent-posts .title {
+  color: #000000;
+  margin-bottom: 0;
+}
+
+.follows.row {
+  width: 100%;
+  overflow: hidden;
+  padding: 15px 4%;
+  background-color: #f5f4f3;
+}
+.follows.row .col {
+  float: left;
+}
+.follows.row .col.tw,
+.follows.row .col.fb {
+  width: 47% !important;
+}
+.follows.row .col.tw {
+  margin-right: 6%;
+}
+.follows.row .col.tw .title {
+  margin-bottom: 23px;
+}
+
+.block-recent-posts .row,
 .cms-content.row,
 .videos.row {
+  overflow: hidden;
   width: 100%;
 }
+.block-recent-posts .row .title,
+.cms-content.row .title,
+.videos.row .title {
+  margin: 24px 0 12px 0;
+}
+.block-recent-posts .row .col,
 .cms-content.row .col,
 .videos.row .col {
   float: left;
   width: 100%;
   margin-bottom: 5px;
 }
+.block-recent-posts .row .col img,
 .cms-content.row .col img,
 .videos.row .col img {
   width: 100%;
 }
+.block-recent-posts .row .col h3.post-title,
+.cms-content.row .col h3.post-title,
+.videos.row .col h3.post-title {
+  color: #000000;
+  margin: 0;
+}
+.block-recent-posts .row .col,
 .cms-content.row .col,
 .videos.row .col {
   width: 32%;
   margin-right: 2%;
 }
+.block-recent-posts .row .col.last,
 .cms-content.row .col.last,
 .videos.row .col.last {
   margin-right: 0;
@@ -223,8 +266,9 @@ body .promos > li {
   overflow: hidden;
 }
 
-.video-container iframe .ytp-watch-later-button {
-  display: none !important;
+.video-container {
+  padding-top: 18%;
+  padding-bottom: 0;
 }
 
 .video-container iframe, .video-container object, .video-container embed {
@@ -232,9 +276,9 @@ body .promos > li {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 90%;
 }
 
 .video-container iframe, .video-container object, .video-container embed {
-  height: 32%;
+  height: 100%;
 }

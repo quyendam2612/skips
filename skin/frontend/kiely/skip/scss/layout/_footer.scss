@@ -39,20 +39,22 @@
 .footer {
     clear: both;
     width: 100%;
-    border-top: 1px solid $c-module-border;
-    padding-top: $trim;
+    overflow: hidden;
+    background-color: #0f141a;
+    padding: $trim;
 
     @include bp(max-width, $bp-xsmall) {
         padding-top: $trim-small;
     }
 
     .block-title {
-        border-bottom: 0;
+        border: 0;
         padding: 3px 0;
     }
 
     .block-title strong {
         font-weight: normal;
+        color: #ffffff;
     }
 
     .block-title,
@@ -62,7 +64,7 @@
 
     .links {
         float: left;
-        width: 17%;
+        width: 25%;
         padding: 0 $trim 0 0;
         margin-bottom: $trim;
 
@@ -70,13 +72,23 @@
             word-break: break-all;
             line-height: 1.4;
             padding: 4px 0;
+
+            .bul {
+                color: #ffffff;
+                margin-right: 5px;
+            }
         }
 
         a {
-            color: $c-text;
+            color: #a9a6b8;
             &:hover {
-                color: $c-action;
+                color: #ffffff;
             }
+        }
+
+        p.first, p.second, p.third {
+            color: #ffffff;
+            margin: 10px 0;
         }
     }
 
@@ -227,7 +239,7 @@
 
     @include bp(max-width, $bp-small) {
         $links-trim: percentage(15px / 480px);
-        $links-width: (100 - $links-trim) / 2;
+        $links-width: (100 - $links-trim) / 1;
 
         .links {
             width: $links-width;
@@ -243,6 +255,105 @@
             clear: both;
             float: left;
             width: 100%;
+        }
+    }
+
+    .block-subscribe {
+        width: 100%;
+        overflow: hidden;
+
+        .social-icons {
+            float: left;
+            margin-top: 12px;
+
+            .facebook,
+            .twitter,
+            .gplus,
+            .pinterest,
+            .linkedin,
+            .youtube,
+            .email {
+                display: inline-block;
+                width: 34px;
+                height: 34px;
+            }
+
+            .facebook {
+                background: url(../images/social-icons.png) 0 0;
+            }
+            .twitter {
+                background: url(../images/social-icons.png) -34px 0;
+            }
+            .gplus {
+                background: url(../images/social-icons.png) -70px 0;
+            }
+            .pinterest {
+                background: url(../images/social-icons.png) -105px 0;
+            }
+            .linkedin {
+                background: url(../images/social-icons.png) -141px 0;
+            }
+            .youtube {
+                background: url(../images/social-icons.png) -176px 0;
+            }
+            .email {
+                background: url(../images/social-icons.png) -212px 0;
+            }
+        }
+
+        .subscribe {
+            float: right;
+
+            .block-content .label {
+                width: 100px;
+                height: 30px;
+                float: left;
+                display: table;
+
+                span {
+                    display: table-cell;
+                    vertical-align: middle;
+                    font-size: 14px;
+                    color: #a9a6b8;
+                }
+            }
+
+            .input-box, .actions {
+                width: auto;
+            }
+
+            .actions {
+                width: 100px;
+
+                .button {
+                    color: #27383c;
+                    background: #f08f23;
+                }
+            }
+        }
+
+        @include bp(max-width, $bp-medium) {
+            .social-icons, .subscribe {
+                width: 100%;
+                text-align: center;
+            }
+
+            .subscribe {
+                .input-box {
+                    width: calc(100% - 200px);
+                }
+            }
+        }
+
+        @include bp(max-width, $bp-small) {
+            .subscribe {
+                .block-content .label {
+                    width: 100%;
+                }
+                .input-box {
+                    width: calc(100% - 100px);
+                }
+            }
         }
     }
 }

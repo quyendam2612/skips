@@ -4028,8 +4028,9 @@ a.skip-link {
 .footer {
   clear: both;
   width: 100%;
-  border-top: 1px solid #CCCCCC;
-  padding-top: 30px;
+  overflow: hidden;
+  background-color: #0f141a;
+  padding: 30px;
   /* -------------------------------------------- *
    * Social icons
    */
@@ -4040,11 +4041,12 @@ a.skip-link {
   }
 }
 .footer .block-title {
-  border-bottom: 0;
+  border: 0;
   padding: 3px 0;
 }
 .footer .block-title strong {
   font-weight: normal;
+  color: #ffffff;
 }
 .footer .block-title,
 .footer address {
@@ -4052,7 +4054,7 @@ a.skip-link {
 }
 .footer .links {
   float: left;
-  width: 17%;
+  width: 25%;
   padding: 0 30px 0 0;
   margin-bottom: 30px;
 }
@@ -4061,11 +4063,19 @@ a.skip-link {
   line-height: 1.4;
   padding: 4px 0;
 }
+.footer .links li .bul {
+  color: #ffffff;
+  margin-right: 5px;
+}
 .footer .links a {
-  color: #636363;
+  color: #a9a6b8;
 }
 .footer .links a:hover {
-  color: #3399CC;
+  color: #ffffff;
+}
+.footer .links p.first, .footer .links p.second, .footer .links p.third {
+  color: #ffffff;
+  margin: 10px 0;
 }
 .footer .block-subscribe {
   float: right;
@@ -4207,7 +4217,7 @@ a.skip-link {
 }
 @media only screen and (max-width: 599px) {
   .footer .links {
-    width: 48.4375%;
+    width: 96.875%;
     margin-right: 0;
   }
   .footer .links:nth-child(odd) {
@@ -4218,6 +4228,88 @@ a.skip-link {
     clear: both;
     float: left;
     width: 100%;
+  }
+}
+.footer .block-subscribe {
+  width: 100%;
+  overflow: hidden;
+}
+.footer .block-subscribe .social-icons {
+  float: left;
+  margin-top: 12px;
+}
+.footer .block-subscribe .social-icons .facebook,
+.footer .block-subscribe .social-icons .twitter,
+.footer .block-subscribe .social-icons .gplus,
+.footer .block-subscribe .social-icons .pinterest,
+.footer .block-subscribe .social-icons .linkedin,
+.footer .block-subscribe .social-icons .youtube,
+.footer .block-subscribe .social-icons .email {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+}
+.footer .block-subscribe .social-icons .facebook {
+  background: url(../images/social-icons.png) 0 0;
+}
+.footer .block-subscribe .social-icons .twitter {
+  background: url(../images/social-icons.png) -34px 0;
+}
+.footer .block-subscribe .social-icons .gplus {
+  background: url(../images/social-icons.png) -70px 0;
+}
+.footer .block-subscribe .social-icons .pinterest {
+  background: url(../images/social-icons.png) -105px 0;
+}
+.footer .block-subscribe .social-icons .linkedin {
+  background: url(../images/social-icons.png) -141px 0;
+}
+.footer .block-subscribe .social-icons .youtube {
+  background: url(../images/social-icons.png) -176px 0;
+}
+.footer .block-subscribe .social-icons .email {
+  background: url(../images/social-icons.png) -212px 0;
+}
+.footer .block-subscribe .subscribe {
+  float: right;
+}
+.footer .block-subscribe .subscribe .block-content .label {
+  width: 100px;
+  height: 30px;
+  float: left;
+  display: table;
+}
+.footer .block-subscribe .subscribe .block-content .label span {
+  display: table-cell;
+  vertical-align: middle;
+  font-size: 14px;
+  color: #a9a6b8;
+}
+.footer .block-subscribe .subscribe .input-box, .footer .block-subscribe .subscribe .actions {
+  width: auto;
+}
+.footer .block-subscribe .subscribe .actions {
+  width: 100px;
+}
+.footer .block-subscribe .subscribe .actions .button {
+  color: #27383c;
+  background: #f08f23;
+}
+@media only screen and (max-width: 770px) {
+  .footer .block-subscribe .social-icons, .footer .block-subscribe .subscribe {
+    width: 100%;
+    text-align: center;
+  }
+  .footer .block-subscribe .subscribe .input-box {
+    width: calc(100% - 200px);
+  }
+}
+@media only screen and (max-width: 599px) {
+  .footer .block-subscribe .subscribe .block-content .label {
+    width: 100%;
+  }
+  .footer .block-subscribe .subscribe .input-box {
+    width: calc(100% - 100px);
   }
 }
 

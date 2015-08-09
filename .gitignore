@@ -1,0 +1,14 @@
+.idea
+var
+media
+js/commercebug
+app/code/local/Opencommercellc
+app/etc/modules/Opencommercellc_Commercebug.xml
+skip-extension
+*.zip
+.sass-cache
+config.rb
+deploy
+kielyski*
+sass
+stylesheets

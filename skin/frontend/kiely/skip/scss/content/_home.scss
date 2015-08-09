@@ -215,9 +215,54 @@ body .promos > li {
     }
 }
 
+.videos,
+.block-recent-posts {
+    .title {
+        color: #000000;
+        margin-bottom: 0;
+    }
+}
+
+.follows.row {
+    width: 100%;
+    overflow: hidden;
+    padding: 15px 4%;
+    background-color: #f5f4f3;
+
+    .col {
+        float: left;
+    }
+
+    .col.tw,
+    .col.fb {
+        width: 47% !important;
+    }
+
+    @include bp(max-width, $bp-small) {
+        .col.tw,
+        .col.fb {
+            width: 100% !important;
+        }
+    }
+
+    .col.tw {
+        margin-right: 6%;
+
+        .title {
+            margin-bottom: 23px;
+        }
+    }
+}
+
+.block-recent-posts .row,
 .cms-content.row,
 .videos.row {
+    overflow: hidden;
     width: 100%;
+
+    .title {
+        margin: 24px 0 12px 0;
+    }
 
     .col {
         float: left;
@@ -226,6 +271,11 @@ body .promos > li {
 
         img {
             width: 100%;
+        }
+
+        h3.post-title {
+            color: #000000;
+            margin: 0;
         }
     }
     @include bp(min-width, $bp-small+1) {
@@ -248,8 +298,11 @@ body .promos > li {
     overflow:hidden;
 }
 
-.video-container iframe .ytp-watch-later-button {
-    display: none !important;
+@include bp(min-width, $bp-small+1) {
+    .video-container {
+        padding-top: 18%;
+        padding-bottom: 0;
+    }
 }
 
 .video-container iframe, .video-container object, .video-container embed {
@@ -257,11 +310,11 @@ body .promos > li {
     top:0;
     left:0;
     width:100%;
-    height:100%;
+    height:90%;
 }
 
 @include bp(min-width, $bp-small+1) {
     .video-container iframe, .video-container object, .video-container embed {
-        height: 32%;
+        height: 100%;
     }
 }

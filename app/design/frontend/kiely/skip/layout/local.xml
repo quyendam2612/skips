@@ -3,7 +3,48 @@
 <layout version="0.1.0">
 
     <default>
+        <reference name="footer">
+            <block type="cms/block" name="cms_footer_links" before="footer_links">
+                <action method="setBlockId">
+                    <block_id>footer_links_contact</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="cms_footer_links2" before="footer_links">
+                <action method="setBlockId">
+                    <block_id>footer_links_company</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="cms_footer_links3" before="footer_links">
+                <action method="setBlockId">
+                    <block_id>footer_links_information</block_id>
+                </action>
+            </block>
+            <block type="cms/block" name="cms_footer_links4" before="footer_links">
+                <action method="setBlockId">
+                    <block_id>footer_links_account</block_id>
+                </action>
+            </block>
+            <reference name="footer_links">
+                <action method="removeLinkByUrl"><url helper="catalog/map/getCategoryUrl" /></action>
+                <action method="removeLinkByUrl"><url helper="catalogsearch/getSearchTermUrl" /></action>
+                <action method="removeLinkByUrl"><url helper="catalogsearch/getAdvancedSearchUrl" /></action>
 
+                <!--<action method="addLink" translate="label title" module="catalog">-->
+                    <!--<label>Managed Accounts</label>-->
+                    <!--<url helper="customer/getAccountUrl" />-->
+                    <!--<title>Managed Accounts</title>-->
+                <!--</action>-->
+                <!--<action method="addLink" translate="label title" module="catalog">-->
+                    <!--<label>Managed Accounts</label>-->
+                    <!--<url helper="customer/getAccountUrl" />-->
+                    <!--<title>Managed Accounts</title>-->
+                <!--</action>-->
+            </reference>
+            <reference name="footer_links2">
+                <action method="removeLinkByUrl"><url helper="customer/getAccountUrl" /></action>
+                <remove name="return_link" />
+            </reference>
+        </reference>
     </default>
 
 </layout>
