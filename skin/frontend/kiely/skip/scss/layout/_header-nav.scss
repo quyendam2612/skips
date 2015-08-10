@@ -151,6 +151,7 @@ $nav-primary-height: 43px;
         // Increase clickable area of anchors for small viewports
         a.level0,
         a {
+            color: #636363;
             line-height: $nav-primary-height + 5px;
         }
 
@@ -188,7 +189,7 @@ $nav-primary-height: 43px;
 
         li.menu-active > a,
         li.sub-menu-active > a {
-            color: $c-action;
+            color: #636363;
         }
     }
 }
@@ -225,7 +226,7 @@ $nav-primary-height: 43px;
 
         /* Default styles for 1+ drop-down menus */
         li.level0 ul {
-            @include menu;
+            background: #010101;
             position: absolute;
             left: 0;
             top: $nav-primary-height; /* Height of ".nav-primary a.level0" */

@@ -3523,6 +3523,7 @@ a.skip-link {
 @media only screen and (max-width: 770px) {
   .nav-primary a.level0,
   .nav-primary a {
+    color: #636363;
     line-height: 48px;
   }
   .nav-primary li.level0 ul {
@@ -3567,7 +3568,7 @@ a.skip-link {
   }
   .nav-primary li.menu-active > a,
   .nav-primary li.sub-menu-active > a {
-    color: #3399CC;
+    color: #636363;
   }
 }
 /* ============================================ *
@@ -3599,8 +3600,7 @@ a.skip-link {
     z-index: 200;
   }
   .nav-primary li.level0 ul {
-    background: #FBFBFB;
-    border: solid 1px #CCCCCC;
+    background: #010101;
     position: absolute;
     left: 0;
     top: 43px;
@@ -9983,6 +9983,17 @@ div.paypal-logo span > img {
     padding-left: 0;
   }
 }
+.faqs a {
+  color: #191a20;
+}
+.faqs .expand_heading {
+  padding-top: 20px;
+  border-top: 1px solid #eaeaea;
+}
+.faqs .toggle_container {
+  padding-bottom: 20px;
+}
+
 /* ============================================ *
  * Pricing Conditions
  * ============================================ */

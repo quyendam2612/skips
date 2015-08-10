@@ -2978,8 +2978,7 @@ a.skip-link {
   z-index: 200;
 }
 .nav-primary li.level0 ul {
-  background: #FBFBFB;
-  border: solid 1px #CCCCCC;
+  background: #010101;
   position: absolute;
   left: 0;
   top: 43px;
@@ -8002,6 +8001,17 @@ div.paypal-logo span > img {
 }
 #contactForm .fieldset .legend + .required {
   margin: 0;
+}
+
+.faqs a {
+  color: #191a20;
+}
+.faqs .expand_heading {
+  padding-top: 20px;
+  border-top: 1px solid #eaeaea;
+}
+.faqs .toggle_container {
+  padding-bottom: 20px;
 }
 
 /* ============================================ *

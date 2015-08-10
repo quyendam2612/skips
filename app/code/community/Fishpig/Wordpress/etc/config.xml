@@ -258,19 +258,19 @@
 			<widgets>
 				<search><block>sidebar_widget_search</block></search>
 				<pages><block>sidebar_widget_pages</block><template>wordpress/sidebar/widget/pages.phtml</template></pages>
-				<recent-posts><block>sidebar_widget_posts</block><template>wordpress/sidebar/widget/posts.phtml</template></recent-posts>
-				<recent-comments><block>sidebar_widget_comments</block><template>wordpress/sidebar/widget/comments.phtml</template></recent-comments>
-				<archives><block>sidebar_widget_archives</block><template>wordpress/sidebar/widget/archives.phtml</template></archives>
-				<categories><block>sidebar_widget_categories</block><template>wordpress/sidebar/widget/categories.phtml</template></categories>
+				<!--<recent-posts><block>sidebar_widget_posts</block><template>wordpress/sidebar/widget/posts.phtml</template></recent-posts>-->
+				<!--<recent-comments><block>sidebar_widget_comments</block><template>wordpress/sidebar/widget/comments.phtml</template></recent-comments>-->
+				<!--<archives><block>sidebar_widget_archives</block><template>wordpress/sidebar/widget/archives.phtml</template></archives>-->
+				<!--<categories><block>sidebar_widget_categories</block><template>wordpress/sidebar/widget/categories.phtml</template></categories>-->
 				<tag_cloud><block>sidebar_widget_tagcloud</block><template>wordpress/sidebar/widget/tagcloud.phtml</template></tag_cloud>
 				<text><block>sidebar_widget_text</block><template>wordpress/sidebar/widget/text.phtml</template></text>
-				<meta><block>sidebar_widget_meta</block><template>wordpress/sidebar/widget/meta.phtml</template></meta>
-				<rss><block>sidebar_widget_rss</block><template>wordpress/sidebar/widget/rss.phtml</template></rss>
-				<nav_menu><block>sidebar_widget_menu</block><template>wordpress/sidebar/widget/menu.phtml</template></nav_menu>
-				<calendar><block>sidebar_widget_calendar</block></calendar>
-				<categoryposts><block>sidebar_widget_posts</block><template>wordpress/sidebar/widget/categoryposts.phtml</template></categoryposts>
-				<widget_sp_image><block>sidebar_widget_image</block></widget_sp_image>
-				<lc_taxonomy><block>sidebar_widget_taxonomy</block><template>wordpress/sidebar/widget/taxonomy.phtml</template></lc_taxonomy>
+				<!--<meta><block>sidebar_widget_meta</block><template>wordpress/sidebar/widget/meta.phtml</template></meta>-->
+				<!--<rss><block>sidebar_widget_rss</block><template>wordpress/sidebar/widget/rss.phtml</template></rss>-->
+				<!--<nav_menu><block>sidebar_widget_menu</block><template>wordpress/sidebar/widget/menu.phtml</template></nav_menu>-->
+				<!--<calendar><block>sidebar_widget_calendar</block></calendar>-->
+				<!--<categoryposts><block>sidebar_widget_posts</block><template>wordpress/sidebar/widget/categoryposts.phtml</template></categoryposts>-->
+				<!--<widget_sp_image><block>sidebar_widget_image</block></widget_sp_image>-->
+				<!--<lc_taxonomy><block>sidebar_widget_taxonomy</block><template>wordpress/sidebar/widget/taxonomy.phtml</template></lc_taxonomy>-->
 			</widgets>
 		</sidebar>
 	</wordpress>
