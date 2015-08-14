@@ -8513,6 +8513,20 @@ body.newsletter-manage-index .my-account .form-list {
     float: right;
   }
 }
+.contacts-index-index .left,
+.contacts-index-index .right {
+  float: left;
+  width: 50%;
+}
+.contacts-index-index .left .page-title,
+.contacts-index-index .right .page-title {
+  padding-left: 40px;
+}
+@media only screen and (max-width: 599px) {
+  .contacts-index-index .left, .contacts-index-index .right {
+    width: 100%;
+  }
+}
 
 /* ============================================ *
  * PayPal

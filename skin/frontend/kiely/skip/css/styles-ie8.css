@@ -6850,6 +6850,15 @@ body.newsletter-manage-index .my-account .form-list {
 .contacts-index-index .buttons-set p.required {
   float: left;
 }
+.contacts-index-index .left,
+.contacts-index-index .right {
+  float: left;
+  width: 50%;
+}
+.contacts-index-index .left .page-title,
+.contacts-index-index .right .page-title {
+  padding-left: 40px;
+}
 
 /* ============================================ *
  * PayPal

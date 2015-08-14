@@ -1,0 +1,92 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magento.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magento.com for more information.
+ *
+ * @category    design
+ * @package     rwd_default
+ * @copyright   Copyright (c) 2006-2015 X.commerce, Inc. (http://www.magento.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+?>
+<div class="left">
+	<div class="text2columns" id="mf64">
+		<p id="mf65"><strong id="mf66">Kiely Bros Ltd</strong></p>
+		<p id="mf67">198 Speedwell Rd</p>
+		<p id="mf68">Hay Mills <br id="mf69">
+			Birmingham<br id="mf70">
+			B25 8HH</p>
+		<p id="mf71"><strong id="mf72">Tel:</strong> 0121 772 6770<br id="mf73">
+			<strong id="mf74">Fax:</strong> 0121 772 6771</p>
+		<p id="mf75"><strong id="mf76">Sales:</strong> <a href="javascript:location.href='mailto:'+String.fromCharCode(101,110,113,117,105,114,105,101,115,64,107,105,101,108,121,98,114,111,115,108,116,100,46,99,111,46,117,107)+'?'" id="mfa22">enquiries@kielybrosltd.co.uk</a><span class="103081611-25022011" id="mf77"><font size="3" face="Tahoma" color="#0000ff" id="mf78"> </font></span><br id="mf79">
+			<strong id="mf80">Technical Support:</strong>&nbsp;<a href="javascript:location.href='mailto:'+String.fromCharCode(101,110,113,117,105,114,105,101,115,64,107,105,101,108,121,98,114,111,115,108,116,100,46,99,111,46,117,107)+'?'" id="mfa23">enquiries@kielybrosltd.co.uk</a><span class="103081611-25022011" id="mf81"><font size="3" face="Tahoma" color="#0000ff" id="mf82"> <br id="mf83">
+				</font></span></p>
+		<p id="mf84">&nbsp;</p>
+		<br id="mf85">
+		<div id="mf86"><b id="mf87">&nbsp;</b></div>
+		&nbsp;</div>
+</div>
+<div class="right">
+<div id="messages_product_view"><?php echo $this->getMessagesBlock()->toHtml() ?></div>
+<div class="page-title">
+    <h1><?php echo Mage::helper('contacts')->__('Contact Us') ?></h1>
+</div>
+<form action="<?php echo $this->getFormAction(); ?>" id="contactForm" method="post" class="scaffold-form">
+    <div class="fieldset">
+        <h2 class="legend"><?php echo Mage::helper('contacts')->__('Contact Information') ?></h2>
+        <p class="required"><?php echo Mage::helper('contacts')->__('* Required Fields') ?></p>
+        <ul class="form-list">
+            <li class="fields">
+                <div class="field">
+                    <label for="name" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Name') ?></label>
+                    <div class="input-box">
+                        <input name="name" id="name" title="<?php echo Mage::helper('contacts')->__('Name') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserName()) ?>" class="input-text required-entry" type="text" />
+                    </div>
+                </div>
+                <div class="field">
+                    <label for="email" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Email') ?></label>
+                    <div class="input-box">
+                        <input name="email" id="email" title="<?php echo Mage::helper('contacts')->__('Email') ?>" value="<?php echo $this->escapeHtml($this->helper('contacts')->getUserEmail()) ?>" class="input-text required-entry validate-email" type="email" autocapitalize="off" autocorrect="off" spellcheck="false" />
+                    </div>
+                </div>
+            </li>
+            <li>
+                <label for="telephone"><?php echo Mage::helper('contacts')->__('Telephone') ?></label>
+                <div class="input-box">
+                    <input name="telephone" id="telephone" title="<?php echo Mage::helper('contacts')->__('Telephone') ?>" value="" class="input-text" type="tel" />
+                </div>
+            </li>
+            <li class="wide">
+                <label for="comment" class="required"><em>*</em><?php echo Mage::helper('contacts')->__('Comment') ?></label>
+                <div class="input-box">
+                    <textarea name="comment" id="comment" title="<?php echo Mage::helper('contacts')->__('Comment') ?>" class="required-entry input-text" cols="5" rows="3"></textarea>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="buttons-set">
+        <input type="text" name="hideit" id="hideit" value="" style="display:none !important;" />
+        <button type="submit" title="<?php echo Mage::helper('contacts')->__('Submit') ?>" class="button"><span><span><?php echo Mage::helper('contacts')->__('Submit') ?></span></span></button>
+    </div>
+</form>
+<script type="text/javascript">
+//<![CDATA[
+    var contactForm = new VarienForm('contactForm', true);
+//]]>
+</script>
+</div>

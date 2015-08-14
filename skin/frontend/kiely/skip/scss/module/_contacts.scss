@@ -50,4 +50,20 @@
             }
         }
     }
+
+    .left,
+    .right {
+        float: left;
+        width: 50%;
+
+        .page-title {
+            padding-left: 40px;
+        }
+    }
+
+    @include bp(max-width, $bp-small) {
+        .left, .right {
+            width: 100%;
+        }
+    }
 }
