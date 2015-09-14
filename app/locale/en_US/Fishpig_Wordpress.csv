@@ -91,7 +91,7 @@ Add,Add
 "Leave a comment","Leave a comment"
 "Daily Archives: %s","Daily Archives: %s"
 "Monthly Archives: %s","Monthly Archives: %s"
-"Continue reading <span class=\"meta-nav\">&rarr;</span>","Continue reading <span class=\"meta-nav\">&rarr;</span>"
+"Continue reading <span class=\"meta-nav\">&rarr;</span>","Find out more <span class=\"meta-nav\">&rarr;</span>"
 "This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>.","This entry was posted in %s and tagged %s on %s<span class=\"by-author\"> by %s</span>."
 "This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>.","This entry was posted in %s on %s<span class=\"by-author\"> by %s</span>."
 "This entry was posted on %s<span class=\"by-author\"> by %s</span>.","This entry was posted on %s<span class=\"by-author\"> by %s</span>."

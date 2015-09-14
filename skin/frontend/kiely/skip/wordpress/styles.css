@@ -13,6 +13,12 @@
  */
 .blog-search { padding: 5px; }
 .blog-search .input-text { margin-bottom: 4px;}
+.block-blog-search .block-title strong {
+    color: #000;
+}
+.block-blog-search .blog-search button {
+    background: #000;
+}
 
 /**
  * General post (view and list)
@@ -42,6 +48,16 @@
 .blog-title.not-first-page { display: none; }
 .blog-title.with-tagline { margin-bottom: 10px; }
 .blog-tag-line {  }
+.blog-title.page-title h1{
+    font-size: 40px;
+    font-weight: bold;
+    border: none;
+}
+.blog-desc.blog-tag-line {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
 
 /**
  * Post list page
@@ -50,6 +66,17 @@
 .post-list li.item { margin-bottom: 20px; }
 .post-list li.item .post-list-item { height: 1%; overflow: hidden; }
 .post-list h2 { line-height: 1em; margin-bottom: 1em; }
+
+.blog-home .post-list .post-list-item h2 {
+    display: none;
+}
+.post-list-item a.read-more {
+    color: #000;
+    font-weight: bold;
+}
+.post-list-item .post-meta.details {
+    display: none;
+}
 
 /**
  * Post view page
@@ -306,4 +333,9 @@ img.max-width { max-width: 100%; }
     width: 150px;
     height: 150px;
     float: left;
+}
+
+.pager li,
+.pager li a {
+    color: #000;
 }

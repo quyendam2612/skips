@@ -2271,7 +2271,7 @@ span.weee {
   display: block;
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
-  border-left: 4px solid #3399CC;
+  border-left: 4px solid #000;
   border-right: none;
   top: 50%;
   margin-top: -3px;
@@ -2286,7 +2286,7 @@ span.weee {
   display: block;
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
-  border-left: 4px solid #246b8f;
+  border-left: 4px solid #000;
   border-right: none;
 }
 
@@ -2298,7 +2298,7 @@ span.weee {
   display: block;
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
-  border-right: 4px solid #3399CC;
+  border-right: 4px solid #000;
   border-left: none;
   top: 50%;
   margin-top: -3px;
@@ -2313,7 +2313,7 @@ span.weee {
   display: block;
   border-top: 4px solid transparent;
   border-bottom: 4px solid transparent;
-  border-right: 4px solid #246b8f;
+  border-right: 4px solid #000;
   border-left: none;
 }
 
