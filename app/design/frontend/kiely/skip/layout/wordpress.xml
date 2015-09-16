@@ -136,6 +136,10 @@
 				<action method="setTitle" translate="title" module="wordpress"><title><![CDATA[Related Products]]></title></action>
 			</block>
 		</reference>
+        <reference name="right">
+            <remove name="catalog.compare.sidebar" />
+            <remove name="right.poll" />
+        </reference>
 	</wordpress_post_view>
 	<!--
 	/**

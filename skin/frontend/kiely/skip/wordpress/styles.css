@@ -83,11 +83,19 @@
  *
  */
 .page-title.post-title { margin-bottom: 4px; }
+.page-title.post-title h1 {
+    border-bottom: none;
+}
 .post-view .post-meta { margin-bottom: 20px; }
 .post-view .post-skips { display: block; margin-top: 20px; width: 100%; }
 .post-view .post-skips .post-skip-previous { margin-right: 10px; }
 
 .post-view .yarpp-related { margin-bottom: 20px; }
+.post-view .post-date,
+.post-view .post-meta,
+.post-view #comments {
+    display: none;
+}
 
 /**
  * Post comments
